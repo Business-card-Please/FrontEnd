@@ -16,7 +16,8 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@pic/*": ["public/images/*"]
+      "@pic/*": ["public/images/*"],
+      "@type/*": ["interface/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/404.tsx"],

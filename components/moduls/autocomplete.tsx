@@ -1,35 +1,22 @@
+import { AutoInputInterFace } from "@type/CommonType";
+import { SchoolNames } from "@type/UniversityType";
 import {
   useState,
   ChangeEventHandler,
   FocusEventHandler,
   MouseEventHandler
 } from "react";
+import {
+  AutoInputBox,
+  AutoInputContent,
+  AutoInputHiddenBox
+} from "styles/CommonStyle";
+import { SignUpInput } from "styles/SignUpStyle";
 
-export default function AutoCompleteInput(props: any) {
-  const fruits = [
-    "apple",
-    "banana",
-    "orange",
-    "lemon",
-    "lime",
-    "pure",
-    "peach",
-    "berry",
-    "dorian",
-    "mango",
-    "starfruit",
-    "dragonFruit",
-    "almond",
-    "walnut",
-    "grape",
-    "persimmon",
-    "대구가톨릭대학",
-    "대구대학",
-    "경북대학"
-  ];
+export default function AutoCompleteInput(props: AutoInputInterFace) {
   const [isHidden, setIsHidden] = useState(true);
   const [liOver, setLiOver] = useState(false);
-  const [result, setResult] = useState("");
+  // const [result, setResult] = useState("");
   const [search, setSearch] = useState("");
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -45,7 +32,7 @@ export default function AutoCompleteInput(props: any) {
   };
   const onMouseOver: MouseEventHandler<HTMLLIElement> = (e) => {
     setLiOver(true);
-    e.currentTarget.style.background = "pink";
+    e.currentTarget.style.background = "#d8f3dc";
   };
   const onMouseLeave: MouseEventHandler<HTMLLIElement> = (e) => {
     setLiOver(false);
@@ -53,35 +40,34 @@ export default function AutoCompleteInput(props: any) {
   };
   const onAddResultClick: MouseEventHandler<HTMLLIElement> = (e) => {
     const { textContent } = e.currentTarget;
-    setResult(textContent as string);
+    // setResult(textContent as string);
+    setSearch(textContent as string);
+    props.setValue(textContent as string);
     setIsHidden(true);
   };
   return (
-    <main className="container">
-      <section>
-        <input
-          type={"search"}
-          onFocus={onFocusIn}
-          onBlur={onFocusOut}
-          onChange={onChange}
-          value={search}
-        />
-        <ul hidden={isHidden}>
-          {fruits.map((fruit, idx) => (
-            <li
-              key={idx}
-              onMouseOver={onMouseOver}
-              onMouseLeave={onMouseLeave}
-              onClick={onAddResultClick}
-              style={{ cursor: "pointer" }}
-              hidden={!fruit.includes(search)}
-            >
-              {fruit}
-            </li>
-          ))}
-        </ul>
-      </section>
-      <div>{result}</div>
-    </main>
+    <AutoInputBox width="100%">
+      <SignUpInput
+        onFocus={onFocusIn}
+        onBlur={onFocusOut}
+        onChange={onChange}
+        placeholder={props.placeHolder}
+        value={search}
+      />
+      <AutoInputHiddenBox hidden={isHidden}>
+        {props.choiceData.map((name, idx) => (
+          <AutoInputContent
+            key={idx}
+            onMouseOver={onMouseOver}
+            onMouseLeave={onMouseLeave}
+            onClick={onAddResultClick}
+            // style={{ cursor: "pointer" }}
+            hidden={!name.includes(search)}
+          >
+            {name}
+          </AutoInputContent>
+        ))}
+      </AutoInputHiddenBox>
+    </AutoInputBox>
   );
 }

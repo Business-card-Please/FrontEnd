@@ -10,11 +10,13 @@ export const CommonText = styled.span<TextScreenProps>`
   padding: ${(props) => props.padding};
   margin: ${(props) => props.margin};
 
-  overflow: hidden;
+  overflow: ${(props) => props.overflow};
   white-space: nowrap;
   text-overflow: ${(props) => props.textOverflow};
 
   font-family: "NotoSansKR";
+
+  box-sizing: content-box;
 
   text-decoration: ${(props) => props.textDecorationLine};
   z-index: ${(props) => props.zIndex};
@@ -59,10 +61,57 @@ export const CommonButton = styled.div<DivScreenProps>`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  box-sizing: content-box;
 
   cursor: pointer;
 `;
 
 export const AutoInputBox = styled.div<DivScreenProps>`
   width: ${(props) => props.width};
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+`;
+
+export const AutoInputHiddenBox = styled.ul`
+  width: 100%;
+  height: 101px;
+
+  position: absolute;
+
+  border: 1px solid #343a40;
+  background: #fff;
+
+  top: 57px;
+
+  list-style-type: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+`;
+
+export const AutoInputContent = styled.li`
+  width: 100%;
+  height: 25px;
+
+  list-style-type: none;
+
+  cursor: pointer;
+  font-family: "NotoSansKR";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+
+  justify-content: flex-start;
+  align-items: center;
+
+  text-align: left;
+  padding-top: 4px;
+  padding-left: 16px;
+
+  box-sizing: border-box;
+  border-bottom: 1px solid #343a40;
 `;

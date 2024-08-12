@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DivScreenProps } from "./StyleInterfacer";
 
 export const SignUpContainer = styled.div`
   width: 100%;
@@ -7,20 +8,37 @@ export const SignUpContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 
   background: #fff;
 `;
 
 export const SignUpBox = styled.div`
-  width: 100%;
+  width: calc(100% - 40px);
   max-width: 1280px;
   min-width: 350px;
-  height: calc(100% - 40px);
+  height: fit-content;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-top: 20px;
+`;
+
+export const SignUpSet = styled.div<DivScreenProps>`
+  width: ${(props) => props.width};
+  height: fit-content;
+
+  max-width: 1280px;
+  min-width: 350px;
+
+  margin: ${(props) => props.margin};
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -34,7 +52,8 @@ export const SignUpInput = styled.input`
   align-items: flex-start;
 
   background: #fff;
-  border-bottom: 1px solid #343a40;
+  border: 1px solid #fff;
+  border-bottom: 2px solid #343a40 !important;
 
   font-family: "NotoSansKR";
   font-size: 16px;
@@ -43,4 +62,16 @@ export const SignUpInput = styled.input`
 
   padding-left: 16px;
   margin-top: 10px;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  ::placeholder {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #999;
+  }
 `;
