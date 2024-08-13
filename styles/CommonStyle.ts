@@ -115,3 +115,17 @@ export const AutoInputContent = styled.li`
   box-sizing: border-box;
   border-bottom: 1px solid #343a40;
 `;
+
+export const WaringText = styled.span<DivScreenProps>`
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+
+  color: #ff0000;
+  padding: ${(props) => props.padding};
+  margin: ${(props) => props.margin};
+
+  font-family: "NotoSansKR";
+
+  box-sizing: content-box;
+`;

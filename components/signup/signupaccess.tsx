@@ -1,8 +1,8 @@
 import { SchoolNames } from "@type/UniversityType";
 import AutoCompleteInput from "components/moduls/autocomplete";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { CommonButton, CommonText } from "styles/CommonStyle";
+import { useCallback, useEffect, useState } from "react";
+import { CommonButton, CommonText, WaringText } from "styles/CommonStyle";
 
 import {
   SignUpBox,
@@ -13,23 +13,50 @@ import {
 
 export default function SignupProcessScreen(props: any) {
   const route = useRouter();
-  const [email, setEmail] = useState("");
-  const [uniName, setUniName] = useState("");
-  const [code, setCode] = useState("");
-  const [pw, setPw] = useState("");
 
   /**
    * 패스워드 확인 용도
    */
   const [check, setCheck] = useState("");
 
+  const [code, setCode] = useState("");
+
   const [isCorrectEmailForm, setIsCorrectEmailForm] = useState(false);
   const [isCorrectPwForm, setIsCorrectPwForm] = useState(false);
-
+  const [isCorrectPwCheck, setIsCorrectPwCheck] = useState(false);
+  const [isCorrectCode, setIsCorrectCode] = useState(false);
+  const mockCode = "111111";
   /**
    * 본인인증 코드 확인 버튼 이벤트 해금용도
+   * 버튼을 누르면 true로 변경
    */
-  const [isSendCode, setIsSendCode] = useState(true);
+  const [isSendCode, setIsSendCode] = useState(false);
+
+  const checkCode = () => {
+    if (code === mockCode) {
+      setIsCorrectCode(true);
+    }
+  };
+
+  const checkDataForNextStep = () => {
+    if (props.data.uniName.length === 0) {
+      alert("학교명을 선택해주세요.");
+      return;
+    } else if (!isCorrectEmailForm) {
+      alert("올바른 이메일을 입력해주세요.");
+      return;
+    } else if (!isCorrectCode) {
+      alert("이메일 인증을 진행해주세요.");
+      return;
+    } else if (!isCorrectPwForm) {
+      alert("올바른 비밀번호를 입력해주세요.");
+      return;
+    } else if (!isCorrectPwCheck) {
+      alert("비밀번호 확인을 다시 입력해주세요.");
+      return;
+    }
+    props.setStep(1);
+  };
 
   /**
    * 이메일 정규식
@@ -50,41 +77,61 @@ export default function SignupProcessScreen(props: any) {
    *
    * @param setValue state 설정 함수
    * @param value 입력 값
-   * @param type 0 mail, 1 pw, 2 code
+   * @param type 0 pw 1 props.data.00
    */
   const handleValueChange = (
     setValue: Function,
     value: number | string | any | undefined,
+    name?: string,
     type?: number
   ) => {
     if (type === 0) {
-      setValue(value);
-    } else if (type === 1) {
-      setValue(value);
-    } else if (type === 2) {
       const inputValue = value.replace(/[^0-9]/g, "");
-      setValue(inputValue);
-    } else {
-      setValue(value);
-    }
+      setValue(name, inputValue);
+    } else if (type === 1) setValue(name, value);
+    else setValue(value);
   };
 
-  useEffect(() => {
-    console.log("uni : ", uniName);
-    return () => {};
-  }, [uniName]);
+  const onChangePwConfirm = useCallback(
+    (value: string, type: number) => {
+      if (type === 0) {
+        if (props.data.pw === value) setIsCorrectPwCheck(true);
+        else setIsCorrectPwCheck(false);
+      } else {
+        if (check === value) setIsCorrectPwCheck(true);
+        else setIsCorrectPwCheck(false);
+      }
+    },
+    [check]
+  );
 
   useEffect(() => {
-    setIsCorrectEmailForm(emailRegex.test(email));
-    console.log("email : ", email);
+    setIsCorrectEmailForm(emailRegex.test(props.data.email));
+    console.log("email : ", props.data.email);
     return () => {};
-  }, [email]);
+  }, [props.data.email]);
 
   useEffect(() => {
-    setIsCorrectPwForm(pwRegex.test(pw));
-    console.log("pw : ", pw);
+    setIsCorrectPwForm(pwRegex.test(props.data.pw));
+    console.log("pw : ", props.data.pw);
     return () => {};
-  }, [pw]);
+  }, [props.data.pw]);
+
+  /**
+   * clo zone
+   * you `must` delete before building this code
+   */
+
+  useEffect(() => {
+    console.log("uni : ", props.data.uniName);
+    return () => {};
+  }, [props.data.uniName]);
+
+  useEffect(() => {
+    // setIsCorrectPwCheck(pw === check ? true : false);
+    console.log("pwCheck : ", isCorrectPwCheck);
+    return () => {};
+  }, [isCorrectPwCheck]);
 
   useEffect(() => {
     console.log("emailForm : ", isCorrectEmailForm);
@@ -95,6 +142,11 @@ export default function SignupProcessScreen(props: any) {
     console.log("pwForm : ", isCorrectPwForm);
     return () => {};
   }, [isCorrectPwForm]);
+
+  useEffect(() => {
+    console.log("isCorrectCode : ", isCorrectCode);
+    return () => {};
+  }, [isCorrectCode]);
 
   return (
     <SignUpContainer>
@@ -108,10 +160,11 @@ export default function SignupProcessScreen(props: any) {
           대학교 입력
         </CommonText>
         <AutoCompleteInput
-          value={uniName}
-          setValue={setUniName}
+          value={props.data.uniName}
+          setValue={props.setData}
           choiceData={SchoolNames}
           placeHolder="대학교명을 입력해주세요."
+          type={1}
         />
       </SignUpBox>
       <SignUpBox>
@@ -126,9 +179,9 @@ export default function SignupProcessScreen(props: any) {
         <SignUpSet width="100%">
           <SignUpInput
             placeholder="이메일을 입력해주세요."
-            value={email}
+            value={props.data.email}
             onChange={(event) =>
-              handleValueChange(setEmail, event.target.value, 0)
+              handleValueChange(props.setData, event.target.value, "email", 1)
             }
           />
           <CommonButton
@@ -137,6 +190,9 @@ export default function SignupProcessScreen(props: any) {
             backGround={isCorrectEmailForm ? "#accdf3" : "#fff"}
             border="1px solid #000"
             margin="0 0 0 30px"
+            onClick={() => {
+              setIsSendCode(true);
+            }}
           >
             <CommonText
               fontSize="18px"
@@ -144,10 +200,15 @@ export default function SignupProcessScreen(props: any) {
               color="#000"
               lineHeight="18px"
             >
-              코드 발사!
+              {isSendCode ? "재발송!" : "코드 발사!"}
             </CommonText>
           </CommonButton>
         </SignUpSet>
+        {props.data.email.length != 0 && !isCorrectEmailForm && (
+          <WaringText margin="10px 0 0 0">
+            - 이메일 형식이 정확하지 않습니다.
+          </WaringText>
+        )}
       </SignUpBox>
       <SignUpBox>
         <CommonText
@@ -164,7 +225,7 @@ export default function SignupProcessScreen(props: any) {
             value={code}
             maxLength={6}
             onChange={(event) => {
-              handleValueChange(setCode, event.target.value, 2);
+              handleValueChange(setCode, event.target.value, code);
             }}
           />
           <CommonButton
@@ -172,6 +233,7 @@ export default function SignupProcessScreen(props: any) {
             height="100%"
             border="1px solid #000"
             backGround={isSendCode ? "#accdf3" : "#fff"}
+            onClick={checkCode}
             margin="0 0 0 30px"
           >
             <CommonText
@@ -197,9 +259,17 @@ export default function SignupProcessScreen(props: any) {
         <SignUpInput
           type="password"
           placeholder="비밀번호를 입력해주세요."
-          value={pw}
-          onChange={(event) => handleValueChange(setPw, event.target.value, 1)}
+          value={props.data.pw}
+          onChange={(event) => {
+            onChangePwConfirm(event.target.value, 1);
+            handleValueChange(props.setData, event.target.value, "pw", 1);
+          }}
         />
+        {props.data.pw.length != 0 && !isCorrectPwForm && (
+          <WaringText margin="10px 0 0 0">
+            - 비밀번호는 소문자,대문자,숫자,특수문자를 포함한 8자리 이상입니다.
+          </WaringText>
+        )}
       </SignUpBox>
       <SignUpBox>
         <CommonText
@@ -214,8 +284,16 @@ export default function SignupProcessScreen(props: any) {
           type="password"
           placeholder="비밀번호를 다시 입력해주세요."
           value={check}
-          onChange={(event) => handleValueChange(setCheck, event.target.value)}
+          onChange={(event) => {
+            onChangePwConfirm(event.target.value, 0);
+            setCheck(event.target.value);
+          }}
         />
+        {check.length != 0 && !isCorrectPwCheck && (
+          <WaringText margin="10px 0 0 0">
+            - 비밀번호와 일치하지 않습니다.
+          </WaringText>
+        )}
       </SignUpBox>
       <SignUpSet width="calc(100% - 40px)" margin="50px 0 0 0">
         <CommonButton
@@ -240,7 +318,7 @@ export default function SignupProcessScreen(props: any) {
           height="48px"
           border="1px solid #000"
           onClick={() => {
-            props.setStep(1);
+            checkDataForNextStep();
           }}
         >
           <CommonText

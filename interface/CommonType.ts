@@ -3,4 +3,5 @@ export interface AutoInputInterFace {
   setValue: Function;
   choiceData: string[];
   placeHolder: string;
+  type: number | undefined;
 }

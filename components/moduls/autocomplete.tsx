@@ -1,10 +1,10 @@
 import { AutoInputInterFace } from "@type/CommonType";
-import { SchoolNames } from "@type/UniversityType";
 import {
   useState,
   ChangeEventHandler,
   FocusEventHandler,
-  MouseEventHandler
+  MouseEventHandler,
+  useEffect
 } from "react";
 import {
   AutoInputBox,
@@ -16,8 +16,8 @@ import { SignUpInput } from "styles/SignUpStyle";
 export default function AutoCompleteInput(props: AutoInputInterFace) {
   const [isHidden, setIsHidden] = useState(true);
   const [liOver, setLiOver] = useState(false);
-  // const [result, setResult] = useState("");
   const [search, setSearch] = useState("");
+  const [key, setKey] = useState("");
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { value } = e.currentTarget;
@@ -40,11 +40,19 @@ export default function AutoCompleteInput(props: AutoInputInterFace) {
   };
   const onAddResultClick: MouseEventHandler<HTMLLIElement> = (e) => {
     const { textContent } = e.currentTarget;
-    // setResult(textContent as string);
     setSearch(textContent as string);
-    props.setValue(textContent as string);
+    props.setValue(key, textContent as string);
     setIsHidden(true);
   };
+
+  useEffect(() => {
+    setSearch(props.value);
+    if (props.type === 1) setKey("uniName");
+    else if (props.type === 2) setKey("major");
+    else "";
+    return () => {};
+  }, []);
+
   return (
     <AutoInputBox width="100%">
       <SignUpInput
@@ -61,7 +69,6 @@ export default function AutoCompleteInput(props: AutoInputInterFace) {
             onMouseOver={onMouseOver}
             onMouseLeave={onMouseLeave}
             onClick={onAddResultClick}
-            // style={{ cursor: "pointer" }}
             hidden={!name.includes(search)}
           >
             {name}
