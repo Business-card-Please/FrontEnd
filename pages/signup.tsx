@@ -57,7 +57,13 @@ export default function SignUpPage() {
           />
         );
       case 1:
-        return <SignupInfoScreen setStep={setStep} />;
+        return (
+          <SignupInfoScreen
+            data={data}
+            setData={setPropsData}
+            setStep={setStep}
+          />
+        );
       case 2:
         return <SignupFavScreen setStep={setStep} />;
       case 3:

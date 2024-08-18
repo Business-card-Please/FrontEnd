@@ -36,6 +36,8 @@ export const SignUpSet = styled.div<DivScreenProps>`
 
   margin: ${(props) => props.margin};
 
+  position: relative;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;

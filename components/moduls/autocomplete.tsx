@@ -12,6 +12,7 @@ import {
   AutoInputHiddenBox
 } from "styles/CommonStyle";
 import { SignUpInput } from "styles/SignUpStyle";
+import { isArray } from "util";
 
 export default function AutoCompleteInput(props: AutoInputInterFace) {
   const [isHidden, setIsHidden] = useState(true);
@@ -46,9 +47,13 @@ export default function AutoCompleteInput(props: AutoInputInterFace) {
   };
 
   useEffect(() => {
+    console.log("data is :>> ", typeof props.choiceData);
+    console.log("isArray ? : ", isArray(props.choiceData));
+    console.log("prop.data :>> ", props.choiceData);
     setSearch(props.value);
     if (props.type === 1) setKey("uniName");
     else if (props.type === 2) setKey("major");
+    else if (props.type === 3) setKey("grade");
     else "";
     return () => {};
   }, []);

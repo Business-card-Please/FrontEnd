@@ -88,6 +88,8 @@ export const AutoInputHiddenBox = styled.ul`
 
   top: 57px;
 
+  z-index: 3;
+
   list-style-type: none;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -114,6 +116,20 @@ export const AutoInputContent = styled.li`
 
   box-sizing: border-box;
   border-bottom: 1px solid #343a40;
+`;
+
+export const TimerBox = styled.div`
+  width: fit-content;
+  height: 100%;
+
+  position: absolute;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  right: 170px;
 `;
 
 export const WaringText = styled.span<DivScreenProps>`
