@@ -77,3 +77,65 @@ export const SignUpInput = styled.input`
     color: #999;
   }
 `;
+
+export const CheckBoxContainer = styled.div`
+  width: calc(100% - 40px);
+  max-width: 1280px;
+  min-width: 350px;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+
+  margin-top: 20px;
+`;
+
+export const CheckBoxSet = styled.div`
+  width: fit-content;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 10px;
+
+  cursor: pointer;
+`;
+
+export const Checkbox = styled.input.attrs({ type: "checkbox" })`
+  display: none;
+`;
+
+export const CheckboxLabel = styled.label`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+  border: 3px solid #707070;
+  position: relative;
+
+  margin-right: 10px;
+
+  cursor: pointer;
+`;
+
+export const CheckedLabel = styled(CheckboxLabel).withConfig({
+  shouldForwardProp: (prop) => prop !== "isChecked"
+})<{ isChecked: boolean }>`
+  &::after {
+    content: ${({ isChecked }) => (isChecked ? '"✔"' : '""')};
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    position: absolute;
+    margin-bottom: 5px;
+  }
+`;

@@ -5,7 +5,13 @@ import SignupInfoScreen from "components/signup/signupuserinfo";
 import { useCallback, useEffect, useState } from "react";
 
 export default function SignUpPage() {
-  const [step, setStep] = useState(0);
+  /**
+   * 0 certify_user
+   * 1 user_info
+   * 2 fav_info
+   * 3 success
+   */
+  const [step, setStep] = useState(2);
   const [data, setData] = useState({
     email: "",
     uniName: "",
@@ -14,8 +20,7 @@ export default function SignUpPage() {
     nickName: "",
     major: "",
     grade: "",
-    mainInterest: -1,
-    subInterest: ""
+    keywords: []
   });
 
   function setPropsData(name: string, value: string | number) {
@@ -31,8 +36,7 @@ export default function SignUpPage() {
         major: "",
         grade: ""
       }));
-    else if (step === 1)
-      setData((data) => ({ ...data, mainInterest: -1, subInterest: "" }));
+    else if (step === 1) setData((data) => ({ ...data, keywords: [] }));
     console.log("data :>> ", data);
     return () => {};
   }, [step]);
@@ -65,7 +69,13 @@ export default function SignUpPage() {
           />
         );
       case 2:
-        return <SignupFavScreen setStep={setStep} />;
+        return (
+          <SignupFavScreen
+            data={data}
+            setData={setPropsData}
+            setStep={setStep}
+          />
+        );
       case 3:
         return <SignupSuccessScreen setStep={setStep} />;
     }

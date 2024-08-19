@@ -145,3 +145,17 @@ export const WaringText = styled.span<DivScreenProps>`
 
   box-sizing: content-box;
 `;
+
+export const NoticeText = styled.span<DivScreenProps>`
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+
+  color: #22223b;
+  padding: ${(props) => props.padding};
+  margin: ${(props) => props.margin};
+
+  font-family: "NotoSansKR";
+
+  box-sizing: content-box;
+`;

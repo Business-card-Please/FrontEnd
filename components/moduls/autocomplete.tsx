@@ -47,9 +47,6 @@ export default function AutoCompleteInput(props: AutoInputInterFace) {
   };
 
   useEffect(() => {
-    console.log("data is :>> ", typeof props.choiceData);
-    console.log("isArray ? : ", isArray(props.choiceData));
-    console.log("prop.data :>> ", props.choiceData);
     setSearch(props.value);
     if (props.type === 1) setKey("uniName");
     else if (props.type === 2) setKey("major");

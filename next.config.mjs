@@ -2,6 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  publicRuntimeConfig: {
+    NEXT_PUBLIC_DEV_MAIN_API: process.env.NEXT_PUBLIC_DEV_MAIN_API,
+    NEXT_PUBLIC_LOCAL_MAIN_API: process.env.NEXT_PUBLIC_LOCAL_MAIN_API
+  },
   compiler: {
     styledComponents: true,
   },
@@ -9,7 +13,7 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-  },
+  }
   // pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js']
 
 };
