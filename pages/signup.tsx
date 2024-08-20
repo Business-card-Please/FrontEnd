@@ -1,7 +1,7 @@
-import SignupProcessScreen from "components/signup/signupaccess";
-import SignupFavScreen from "components/signup/signupfav";
-import SignupSuccessScreen from "components/signup/signupsuccess";
-import SignupInfoScreen from "components/signup/signupuserinfo";
+import SignupProcessScreen from "components/signup/signupAccess";
+import SignupFavScreen from "components/signup/signupFav";
+import SignupSuccessScreen from "components/signup/signupSuccess";
+import SignupInfoScreen from "components/signup/signupUserInfo";
 import { useCallback, useEffect, useState } from "react";
 
 export default function SignUpPage() {

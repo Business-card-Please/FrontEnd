@@ -1,4 +1,4 @@
-import LoginBox from "../components/login/loginbox";
+import LoginBox from "../components/login/loginBox";
 import { LoginContainer } from "../styles/LoginStyle";
 
 function LoginPage() {

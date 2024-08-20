@@ -10,7 +10,7 @@ import {
   LoginInput,
   LoginFastRouteSet
 } from "../../styles/LoginStyle";
-import RouteBox from "./routebox";
+import RouteBox from "./routeBox";
 import d from "@pic/술먹.jpg";
 
 function LoginArea() {

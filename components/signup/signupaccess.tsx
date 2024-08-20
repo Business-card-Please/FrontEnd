@@ -1,5 +1,5 @@
 import { SchoolNames } from "@type/UniversityType";
-import AutoCompleteInput from "components/moduls/autocomplete";
+import AutoCompleteInput from "components/moduls/autoComplete";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import {

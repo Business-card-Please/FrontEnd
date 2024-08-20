@@ -1,4 +1,4 @@
-import AutoCompleteInput from "components/moduls/autocomplete";
+import AutoCompleteInput from "components/moduls/autoComplete";
 import { useEffect, useState } from "react";
 import { CommonButton, CommonText, WaringText } from "styles/CommonStyle";
 import {
