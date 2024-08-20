@@ -195,10 +195,10 @@ export default function SignupProcessScreen(props: any) {
     <SignUpContainer>
       <SignUpBox>
         <CommonText
-          fontSize="18px"
-          fontWeight="700"
-          color="#000"
-          lineHeight="18px"
+          $fontSize="18px"
+          $fontWeight="700"
+          $color="#000"
+          $lineHeight="18px"
         >
           대학교 입력
         </CommonText>
@@ -212,14 +212,14 @@ export default function SignupProcessScreen(props: any) {
       </SignUpBox>
       <SignUpBox>
         <CommonText
-          fontSize="18px"
-          fontWeight="700"
-          color="#000"
-          lineHeight="18px"
+          $fontSize="18px"
+          $fontWeight="700"
+          $color="#000"
+          $lineHeight="18px"
         >
           이메일 입력
         </CommonText>
-        <SignUpSet width="100%">
+        <SignUpSet $width="100%">
           <SignUpInput
             placeholder="이메일을 입력해주세요."
             value={props.data.email}
@@ -229,11 +229,11 @@ export default function SignupProcessScreen(props: any) {
             }}
           />
           <CommonButton
-            width="150px"
-            height="100%"
-            backGround={isCorrectEmailForm ? "#accdf3" : "#fff"}
-            border="1px solid #000"
-            margin="0 0 0 30px"
+            $width="150px"
+            $height="100%"
+            $backGround={isCorrectEmailForm ? "#accdf3" : "#fff"}
+            $border="1px solid #000"
+            $margin="0 0 0 30px"
             onClick={() => {
               if (isCorrectEmailForm) {
                 setIsSendCode(true);
@@ -243,31 +243,31 @@ export default function SignupProcessScreen(props: any) {
             }}
           >
             <CommonText
-              fontSize="18px"
-              fontWeight="700"
-              color="#000"
-              lineHeight="18px"
+              $fontSize="18px"
+              $fontWeight="700"
+              $color="#000"
+              $lineHeight="18px"
             >
               {isSendCode ? "재발송!" : "코드 발사!"}
             </CommonText>
           </CommonButton>
         </SignUpSet>
         {props.data.email.length != 0 && !isCorrectEmailForm && (
-          <WaringText margin="10px 0 0 0">
+          <WaringText $margin="10px 0 0 0">
             - 이메일 형식이 정확하지 않습니다.
           </WaringText>
         )}
       </SignUpBox>
       <SignUpBox>
         <CommonText
-          fontSize="18px"
-          fontWeight="700"
-          color="#000"
-          lineHeight="18px"
+          $fontSize="18px"
+          $fontWeight="700"
+          $color="#000"
+          $lineHeight="18px"
         >
           본인인증 코드 확인
         </CommonText>
-        <SignUpSet width="100%">
+        <SignUpSet $width="100%">
           <SignUpInput
             placeholder="코드를 입력해주세요."
             value={code}
@@ -280,18 +280,18 @@ export default function SignupProcessScreen(props: any) {
             <WaringText>{isSendCode && formatTime(remainingTime)}</WaringText>
           </TimerBox>
           <CommonButton
-            width="150px"
-            height="100%"
-            border="1px solid #000"
-            backGround={isSendCode ? "#accdf3" : "#fff"}
+            $width="150px"
+            $height="100%"
+            $border="1px solid #000"
+            $backGround={isSendCode ? "#accdf3" : "#fff"}
             onClick={checkCode}
-            margin="0 0 0 30px"
+            $margin="0 0 0 30px"
           >
             <CommonText
-              fontSize="18px"
-              fontWeight="700"
-              color="#000"
-              lineHeight="18px"
+              $fontSize="18px"
+              $fontWeight="700"
+              $color="#000"
+              $lineHeight="18px"
             >
               코드 확인!
             </CommonText>
@@ -300,10 +300,10 @@ export default function SignupProcessScreen(props: any) {
       </SignUpBox>
       <SignUpBox>
         <CommonText
-          fontSize="18px"
-          fontWeight="700"
-          color="#000"
-          lineHeight="18px"
+          $fontSize="18px"
+          $fontWeight="700"
+          $color="#000"
+          $lineHeight="18px"
         >
           비밀번호 입력
         </CommonText>
@@ -317,17 +317,17 @@ export default function SignupProcessScreen(props: any) {
           }}
         />
         {props.data.pw.length != 0 && !isCorrectPwForm && (
-          <WaringText margin="10px 0 0 0">
+          <WaringText $margin="10px 0 0 0">
             - 비밀번호는 소문자,대문자,숫자,특수문자를 포함한 8자리 이상입니다.
           </WaringText>
         )}
       </SignUpBox>
       <SignUpBox>
         <CommonText
-          fontSize="18px"
-          fontWeight="700"
-          color="#000"
-          lineHeight="18px"
+          $fontSize="18px"
+          $fontWeight="700"
+          $color="#000"
+          $lineHeight="18px"
         >
           비밀번호 확인
         </CommonText>
@@ -341,42 +341,42 @@ export default function SignupProcessScreen(props: any) {
           }}
         />
         {check.length != 0 && !isCorrectPwCheck && (
-          <WaringText margin="10px 0 0 0">
+          <WaringText $margin="10px 0 0 0">
             - 비밀번호와 일치하지 않습니다.
           </WaringText>
         )}
       </SignUpBox>
-      <SignUpSet width="calc(100% - 40px)" margin="50px 0 0 0">
+      <SignUpSet $width="calc(100% - 40px)" $margin="50px 0 0 0">
         <CommonButton
-          width="49%"
-          height="48px"
-          border="1px solid #000"
+          $width="49%"
+          $height="48px"
+          $border="1px solid #000"
           onClick={() => {
             route.back();
           }}
         >
           <CommonText
-            fontSize="18px"
-            fontWeight="700"
-            color="#000"
-            lineHeight="18px"
+            $fontSize="18px"
+            $fontWeight="700"
+            $color="#000"
+            $lineHeight="18px"
           >
             이전으로 !
           </CommonText>
         </CommonButton>
         <CommonButton
-          width="49%"
-          height="48px"
-          border="1px solid #000"
+          $width="49%"
+          $height="48px"
+          $border="1px solid #000"
           onClick={() => {
             checkDataForNextStep();
           }}
         >
           <CommonText
-            fontSize="18px"
-            fontWeight="700"
-            color="#000"
-            lineHeight="18px"
+            $fontSize="18px"
+            $fontWeight="700"
+            $color="#000"
+            $lineHeight="18px"
           >
             다음단계 !
           </CommonText>
