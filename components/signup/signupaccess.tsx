@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import {
   CommonButton,
   CommonText,
+  NoticeText,
   TimerBox,
   WaringText
 } from "styles/CommonStyle";
@@ -209,6 +210,9 @@ export default function SignupProcessScreen(props: any) {
           placeHolder="대학교명을 입력해주세요."
           type={1}
         />
+        <NoticeText $margin="10px 0 0 0">
+          💡 재학 중인 학교명을 입력 후 선택해주세요.
+        </NoticeText>
       </SignUpBox>
       <SignUpBox>
         <CommonText
@@ -252,6 +256,9 @@ export default function SignupProcessScreen(props: any) {
             </CommonText>
           </CommonButton>
         </SignUpSet>
+        <NoticeText $margin="10px 0 0 0">
+          💡 재학 중인 학교 이메일로 작성해주세요. (얘시 : 000@000.ac.kr)
+        </NoticeText>
         {props.data.email.length != 0 && !isCorrectEmailForm && (
           <WaringText $margin="10px 0 0 0">
             - 이메일 형식이 정확하지 않습니다.
@@ -316,6 +323,10 @@ export default function SignupProcessScreen(props: any) {
             handleValueChange(props.setData, event.target.value, "pw", 1);
           }}
         />
+        <NoticeText $margin="10px 0 0 0">
+          💡 영대소문자와 숫자 그리고 특수문자를 포함하여 8자리 이상
+          입력해주세요.
+        </NoticeText>
         {props.data.pw.length != 0 && !isCorrectPwForm && (
           <WaringText $margin="10px 0 0 0">
             - 비밀번호는 소문자,대문자,숫자,특수문자를 포함한 8자리 이상입니다.

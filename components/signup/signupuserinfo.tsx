@@ -1,6 +1,11 @@
 import AutoCompleteInput from "components/moduls/autoComplete";
 import { useEffect, useState } from "react";
-import { CommonButton, CommonText, WaringText } from "styles/CommonStyle";
+import {
+  CommonButton,
+  CommonText,
+  NoticeText,
+  WaringText
+} from "styles/CommonStyle";
 import {
   SignUpBox,
   SignUpContainer,
@@ -77,6 +82,9 @@ export default function SignupInfoScreen(props: any) {
           placeHolder="전공 및 학부를 입력해주세요."
           type={2}
         />
+        <NoticeText $margin="10px 0 0 0">
+          💡 재학 중인 학과를 입력 후 선택해주세요.
+        </NoticeText>
       </SignUpBox>
       <SignUpBox>
         <CommonText
@@ -147,6 +155,9 @@ export default function SignupInfoScreen(props: any) {
           placeHolder="학년을 입력해주세요."
           type={3}
         />
+        <NoticeText $margin="10px 0 0 0">
+          💡 현재 학년 기준으로 선택해주세요.
+        </NoticeText>
       </SignUpBox>
       <SignUpSet $width="calc(100% - 40px)" $margin="50px 0 0 0">
         <CommonButton

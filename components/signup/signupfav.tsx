@@ -123,9 +123,9 @@ export default function SignupFavScreen(props: any) {
           $height="48px"
           $border="1px solid #000"
           onClick={() => {
-            // filteringKeywords();
-            getSignup();
-            // props.setStep(3);
+            filteringKeywords();
+            // getSignup();
+            props.setStep(3);
           }}
         >
           <CommonText
