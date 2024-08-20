@@ -44,10 +44,10 @@ export default function SignupFavScreen(props: any) {
     <SignUpContainer>
       <SignUpBox>
         <CommonText
-          fontSize="18px"
-          fontWeight="700"
-          color="#000"
-          lineHeight="18px"
+          $fontSize="18px"
+          $fontWeight="700"
+          $color="#000"
+          $lineHeight="18px"
         >
           선호하는 종류
         </CommonText>
@@ -56,10 +56,10 @@ export default function SignupFavScreen(props: any) {
             <Checkbox id="check1" />
             <CheckedLabel htmlFor="check1" isChecked={isChecked} />
             <CommonText
-              fontSize="16px"
-              fontWeight="500"
-              color="#000"
-              lineHeight="16px"
+              $fontSize="16px"
+              $fontWeight="500"
+              $color="#000"
+              $lineHeight="16px"
             >
               교양 과목
             </CommonText>
@@ -68,10 +68,10 @@ export default function SignupFavScreen(props: any) {
             <Checkbox id="check2" />
             <CheckedLabel htmlFor="check2" isChecked={isChecked1} />
             <CommonText
-              fontSize="16px"
-              fontWeight="500"
-              color="#000"
-              lineHeight="16px"
+              $fontSize="16px"
+              $fontWeight="500"
+              $color="#000"
+              $lineHeight="16px"
             >
               전공 과목
             </CommonText>
@@ -80,14 +80,14 @@ export default function SignupFavScreen(props: any) {
       </SignUpBox>
       <SignUpBox>
         <CommonText
-          fontSize="18px"
-          fontWeight="700"
-          color="#000"
-          lineHeight="18px"
+          $fontSize="18px"
+          $fontWeight="700"
+          $color="#000"
+          $lineHeight="18px"
         >
           관심 키워드
         </CommonText>
-        <SignUpSet width="100%">
+        <SignUpSet $width="100%">
           <SignUpInput
             placeholder="키워드를 입력해주세요."
             value={keyword}
@@ -96,32 +96,32 @@ export default function SignupFavScreen(props: any) {
             }}
           />
         </SignUpSet>
-        <NoticeText margin="10px 0 0 0">
+        <NoticeText $margin="10px 0 0 0">
           💡 키워드는 공백(스페이스바)를 이용해서 구분해주세요.
         </NoticeText>
       </SignUpBox>
-      <SignUpSet width="calc(100% - 40px)" margin="50px 0 0 0">
+      <SignUpSet $width="calc(100% - 40px)" $margin="50px 0 0 0">
         <CommonButton
-          width="49%"
-          height="48px"
-          border="1px solid #000"
+          $width="49%"
+          $height="48px"
+          $border="1px solid #000"
           onClick={() => {
             props.setStep(1);
           }}
         >
           <CommonText
-            fontSize="18px"
-            fontWeight="700"
-            color="#000"
-            lineHeight="18px"
+            $fontSize="18px"
+            $fontWeight="700"
+            $color="#000"
+            $lineHeight="18px"
           >
             이전으로 !
           </CommonText>
         </CommonButton>
         <CommonButton
-          width="49%"
-          height="48px"
-          border="1px solid #000"
+          $width="49%"
+          $height="48px"
+          $border="1px solid #000"
           onClick={() => {
             // filteringKeywords();
             getSignup();
@@ -129,10 +129,10 @@ export default function SignupFavScreen(props: any) {
           }}
         >
           <CommonText
-            fontSize="18px"
-            fontWeight="700"
-            color="#000"
-            lineHeight="18px"
+            $fontSize="18px"
+            $fontWeight="700"
+            $color="#000"
+            $lineHeight="18px"
           >
             회원 가입 완료 !
           </CommonText>

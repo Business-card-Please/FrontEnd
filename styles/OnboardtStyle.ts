@@ -34,14 +34,14 @@ export const OnboardBox = styled.div`
 
 export const OnboardContentBox = styled.div<DivScreenProps>`
   width: 100%;
-  height: ${(props) => props.height};
+  height: ${(props) => props.$height};
 
   display: flex;
-  flex-direction: ${(props) => props.flexDirection};
+  flex-direction: ${(props) => props.$flexDirection};
   justify-content: space-around;
   align-items: center;
 
-  padding: ${(props) => props.padding};
+  $padding: ${(props) => props.$padding};
 `;
 
 const wave = keyframes`

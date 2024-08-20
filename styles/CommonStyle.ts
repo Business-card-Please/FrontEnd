@@ -2,34 +2,34 @@ import styled from "styled-components";
 import { DivScreenProps, TextScreenProps } from "./StyleInterfacer";
 
 export const CommonText = styled.span<TextScreenProps>`
-  font-size: ${(props) => props.fontSize};
-  font-weight: ${(props) => props.fontWeight};
-  line-height: ${(props) => props.lineHeight};
+  font-size: ${(props) => props.$fontSize};
+  font-weight: ${(props) => props.$fontWeight};
+  line-height: ${(props) => props.$lineHeight};
 
-  color: ${(props) => props.color};
-  padding: ${(props) => props.padding};
-  margin: ${(props) => props.margin};
+  color: ${(props) => props.$color};
+  padding: ${(props) => props.$padding};
+  margin: ${(props) => props.$margin};
 
-  overflow: ${(props) => props.overflow};
+  overflow: ${(props) => props.$overflow};
   white-space: nowrap;
-  text-overflow: ${(props) => props.textOverflow};
+  text-overflow: ${(props) => props.$textOverflow};
 
   font-family: "NotoSansKR";
 
   box-sizing: content-box;
 
-  text-decoration: ${(props) => props.textDecorationLine};
-  z-index: ${(props) => props.zIndex};
+  text-decoration: ${(props) => props.$textDecorationLine};
+  z-index: ${(props) => props.$zIndex};
   @media screen and (min-width: 1920px) {
-    font-size: ${(props) => props.maxFontSize};
-    line-height: ${(props) => props.maxLineHeight};
-    padding: ${(props) => props.maxPadding};
+    font-size: ${(props) => props.$maxFontSize};
+    line-height: ${(props) => props.$maxLineHeight};
+    padding: ${(props) => props.$maxPadding};
   }
 `;
 
 export const PublicImageBox = styled.div<DivScreenProps>`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  width: ${(props) => props.$width};
+  height: ${(props) => props.$height};
 
   display: flex;
   flex-direction: row;
@@ -38,24 +38,24 @@ export const PublicImageBox = styled.div<DivScreenProps>`
 
   position: relative;
 
-  padding: ${(props) => props.padding};
-  margin: ${(props) => props.margin};
+  padding: ${(props) => props.$padding};
+  margin: ${(props) => props.$margin};
 
   cursor: pointer;
 `;
 
 export const CommonButton = styled.div<DivScreenProps>`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  border: ${(props) => props.border};
-  border-left: ${(props) => props.borderLeft};
-  border-right: ${(props) => props.borderRight};
+  width: ${(props) => props.$width};
+  height: ${(props) => props.$height};
+  border: ${(props) => props.$border};
+  border-left: ${(props) => props.$borderLeft};
+  border-right: ${(props) => props.$borderRight};
 
-  border-radius: ${(props) => props.borderRadius};
-  background: ${(props) => props.backGround};
+  border-radius: ${(props) => props.$borderRadius};
+  background: ${(props) => props.$backGround};
 
-  padding: ${(props) => props.padding};
-  margin: ${(props) => props.margin};
+  padding: ${(props) => props.$padding};
+  margin: ${(props) => props.$margin};
 
   display: flex;
   flex-direction: row;
@@ -67,7 +67,7 @@ export const CommonButton = styled.div<DivScreenProps>`
 `;
 
 export const AutoInputBox = styled.div<DivScreenProps>`
-  width: ${(props) => props.width};
+  width: ${(props) => props.$width};
   height: 100%;
 
   display: flex;
@@ -138,8 +138,8 @@ export const WaringText = styled.span<DivScreenProps>`
   line-height: 12px;
 
   color: #ff0000;
-  padding: ${(props) => props.padding};
-  margin: ${(props) => props.margin};
+  padding: ${(props) => props.$padding};
+  margin: ${(props) => props.$margin};
 
   font-family: "NotoSansKR";
 
@@ -152,8 +152,8 @@ export const NoticeText = styled.span<DivScreenProps>`
   line-height: 12px;
 
   color: #22223b;
-  padding: ${(props) => props.padding};
-  margin: ${(props) => props.margin};
+  padding: ${(props) => props.$padding};
+  margin: ${(props) => props.$margin};
 
   font-family: "NotoSansKR";
 

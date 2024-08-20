@@ -7,20 +7,20 @@ export default function SignupSuccessScreen(props: any) {
   return (
     <SignUpContainer>
       <p>발사ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ</p>
-      <SignUpSet width="calc(100% - 40px)" margin="50px 0 0 0">
+      <SignUpSet $width="calc(100% - 40px)" $margin="50px 0 0 0">
         <CommonButton
-          width="49%"
-          height="48px"
-          border="1px solid #000"
+          $width="49%"
+          $height="48px"
+          $border="1px solid #000"
           onClick={() => {
             route.replace("login");
           }}
         >
           <CommonText
-            fontSize="18px"
-            fontWeight="700"
-            color="#000"
-            lineHeight="18px"
+            $fontSize="18px"
+            $fontWeight="700"
+            $color="#000"
+            $lineHeight="18px"
           >
             로그인 하러 가기
           </CommonText>

@@ -28,13 +28,13 @@ export const SignUpBox = styled.div`
 `;
 
 export const SignUpSet = styled.div<DivScreenProps>`
-  width: ${(props) => props.width};
+  width: ${(props) => props.$width};
   height: fit-content;
 
   max-width: 1280px;
   min-width: 350px;
 
-  margin: ${(props) => props.margin};
+  margin: ${(props) => props.$margin};
 
   position: relative;
 

@@ -11,13 +11,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import {
-  Pagination,
-  Navigation,
-  Autoplay,
-  A11y,
-  Scrollbar
-} from "swiper/modules";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
 import { CommonButton, CommonText, PublicImageBox } from "styles/CommonStyle";
 import c from "@pic/calcEx.svg";
@@ -49,74 +43,78 @@ export default function OnBoardPage() {
         >
           <SwiperSlide>
             <OnboardContentBox
-              height="calc(100% - 40px)"
-              flexDirection="column"
+              $height="calc(100% - 40px)"
+              $flexDirection="column"
             >
-              <PublicImageBox width="100%" height="100%">
+              <PublicImageBox $width="100%" $height="100%">
                 <Image src={s} fill={true} alt="" />
               </PublicImageBox>
             </OnboardContentBox>
           </SwiperSlide>
           <SwiperSlide>
             <OnboardContentBox
-              height="calc(100% - 40px)"
-              flexDirection="column"
+              $height="calc(100% - 40px)"
+              $flexDirection="column"
             >
-              <PublicImageBox width="100%" height="100%">
+              <PublicImageBox $width="100%" $height="100%">
                 <Image src={c} fill={true} alt="" />
               </PublicImageBox>
             </OnboardContentBox>
           </SwiperSlide>
           <SwiperSlide>
             <OnboardContentBox
-              height="calc(100% - 40px)"
-              flexDirection="column"
+              $height="calc(100% - 40px)"
+              $flexDirection="column"
             >
-              <PublicImageBox width="100%" height="100%">
+              <PublicImageBox $width="100%" $height="100%">
                 <Image src={a} fill={true} alt="" />
               </PublicImageBox>
             </OnboardContentBox>
           </SwiperSlide>
           <SwiperSlide>
             <OnboardContentBox
-              height="calc(100% - 40px)"
-              flexDirection="column"
+              $height="calc(100% - 40px)"
+              $flexDirection="column"
             >
-              <PublicImageBox width="100%" height="100%">
+              <PublicImageBox $width="100%" $height="100%">
                 <Image src={t} fill={true} alt="" />
               </PublicImageBox>
             </OnboardContentBox>
           </SwiperSlide>
         </Swiper>
-        <OnboardContentBox height="60px" flexDirection="row" padding="0 20px">
+        <OnboardContentBox
+          $height="60px"
+          $flexDirection="row"
+          $padding="0 20px"
+        >
           <CommonButton
-            width="45%"
-            height="60px"
-            borderRadius="12px"
-            backGround="#56ab91"
+            $width="45%"
+            $height="60px"
+            $borderRadius="12px"
+            $backGround="#56ab91"
             onClick={() => route.push("login")}
           >
             <CommonText
-              fontSize="22px"
-              fontWeight="700"
-              color="#fff"
-              lineHeight="22px"
+              $fontSize="22px"
+              $fontWeight="700"
+              $color="#fff"
+              $lineHeight="22px"
             >
               로그인 하러 가기
             </CommonText>
           </CommonButton>
           <CommonButton
-            width="45%"
-            height="60px"
-            borderRadius="12px"
-            backGround="#343a40"
+            $width="45%"
+            $height="60px"
+            $borderRadius="12px"
+            $backGround="#343a40"
             onClick={() => route.push("signup")}
           >
             <CommonText
-              fontSize="22px"
-              fontWeight="700"
-              color="#fff"
-              lineHeight="22px"
+              $fontSize="22px"
+              $fontWeight="700"
+              $color="#fff"
+              $lineHeight="22px"
             >
               회원 가입하러 가기
             </CommonText>

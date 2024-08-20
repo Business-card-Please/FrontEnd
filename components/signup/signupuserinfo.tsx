@@ -63,10 +63,10 @@ export default function SignupInfoScreen(props: any) {
     <SignUpContainer>
       <SignUpBox>
         <CommonText
-          fontSize="18px"
-          fontWeight="700"
-          color="#000"
-          lineHeight="18px"
+          $fontSize="18px"
+          $fontWeight="700"
+          $color="#000"
+          $lineHeight="18px"
         >
           전공 입력
         </CommonText>
@@ -80,14 +80,14 @@ export default function SignupInfoScreen(props: any) {
       </SignUpBox>
       <SignUpBox>
         <CommonText
-          fontSize="18px"
-          fontWeight="700"
-          color="#000"
-          lineHeight="18px"
+          $fontSize="18px"
+          $fontWeight="700"
+          $color="#000"
+          $lineHeight="18px"
         >
           이름 입력
         </CommonText>
-        <SignUpSet width="100%">
+        <SignUpSet $width="100%">
           <SignUpInput
             placeholder="이름을 입력해주세요."
             value={props.data.name}
@@ -97,21 +97,21 @@ export default function SignupInfoScreen(props: any) {
           />
         </SignUpSet>
         {props.data.name.length == 0 && (
-          <WaringText margin="10px 0 0 0">
+          <WaringText $margin="10px 0 0 0">
             - 이름이 입력되지 않았습니다.
           </WaringText>
         )}
       </SignUpBox>
       <SignUpBox>
         <CommonText
-          fontSize="18px"
-          fontWeight="700"
-          color="#000"
-          lineHeight="18px"
+          $fontSize="18px"
+          $fontWeight="700"
+          $color="#000"
+          $lineHeight="18px"
         >
           닉네임 입력
         </CommonText>
-        <SignUpSet width="100%">
+        <SignUpSet $width="100%">
           <SignUpInput
             placeholder="닉네임을 입력해주세요."
             value={props.data.nickName}
@@ -126,17 +126,17 @@ export default function SignupInfoScreen(props: any) {
           />
         </SignUpSet>
         {props.data.nickName.length === 0 && (
-          <WaringText margin="10px 0 0 0">
+          <WaringText $margin="10px 0 0 0">
             - 닉네임이 입력되지 않았습니다.
           </WaringText>
         )}
       </SignUpBox>
       <SignUpBox>
         <CommonText
-          fontSize="18px"
-          fontWeight="700"
-          color="#000"
-          lineHeight="18px"
+          $fontSize="18px"
+          $fontWeight="700"
+          $color="#000"
+          $lineHeight="18px"
         >
           학년 입력
         </CommonText>
@@ -148,37 +148,37 @@ export default function SignupInfoScreen(props: any) {
           type={3}
         />
       </SignUpBox>
-      <SignUpSet width="calc(100% - 40px)" margin="50px 0 0 0">
+      <SignUpSet $width="calc(100% - 40px)" $margin="50px 0 0 0">
         <CommonButton
-          width="49%"
-          height="48px"
-          border="1px solid #000"
+          $width="49%"
+          $height="48px"
+          $border="1px solid #000"
           onClick={() => {
             props.setStep(0);
           }}
         >
           <CommonText
-            fontSize="18px"
-            fontWeight="700"
-            color="#000"
-            lineHeight="18px"
+            $fontSize="18px"
+            $fontWeight="700"
+            $color="#000"
+            $lineHeight="18px"
           >
             이전으로 !
           </CommonText>
         </CommonButton>
         <CommonButton
-          width="49%"
-          height="48px"
-          border="1px solid #000"
+          $width="49%"
+          $height="48px"
+          $border="1px solid #000"
           onClick={() => {
             checkDataForNextStep();
           }}
         >
           <CommonText
-            fontSize="18px"
-            fontWeight="700"
-            color="#000"
-            lineHeight="18px"
+            $fontSize="18px"
+            $fontWeight="700"
+            $color="#000"
+            $lineHeight="18px"
           >
             다음단계 !
           </CommonText>

@@ -12,7 +12,6 @@ import {
   AutoInputHiddenBox
 } from "styles/CommonStyle";
 import { SignUpInput } from "styles/SignUpStyle";
-import { isArray } from "util";
 
 export default function AutoCompleteInput(props: AutoInputInterFace) {
   const [isHidden, setIsHidden] = useState(true);
@@ -56,7 +55,7 @@ export default function AutoCompleteInput(props: AutoInputInterFace) {
   }, []);
 
   return (
-    <AutoInputBox width="100%">
+    <AutoInputBox $width="100%">
       <SignUpInput
         onFocus={onFocusIn}
         onBlur={onFocusOut}
