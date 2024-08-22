@@ -6,6 +6,12 @@ div#__next > div {
   height: 100%;
 }
 
+li,
+ul,
+input {
+  color: #000;
+}
+
 .swiper {
   width: 100%;
   height: 70%;

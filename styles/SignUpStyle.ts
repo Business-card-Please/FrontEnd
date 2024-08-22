@@ -78,6 +78,18 @@ export const SignUpInput = styled.input`
   }
 `;
 
+export const SignUpSuccessBox = styled.div`
+  width: 100%;
+  height: 400px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid #000;
+`;
+
 export const CheckBoxContainer = styled.div`
   width: calc(100% - 40px);
   max-width: 1280px;

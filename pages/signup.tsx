@@ -11,7 +11,7 @@ export default function SignUpPage() {
    * 2 fav_info
    * 3 success
    */
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(3);
   const [data, setData] = useState({
     email: "",
     uniName: "",
