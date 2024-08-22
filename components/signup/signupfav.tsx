@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getEmailList } from "service/SignupService";
+import { doSignUp, getEmailList } from "service/SignupService";
 import { CommonButton, CommonText, NoticeText } from "styles/CommonStyle";
 import {
   Checkbox,
@@ -25,14 +25,16 @@ export default function SignupFavScreen(props: any) {
     props.setData("keywords", stringDump.split(" "));
   }
 
+  /**
+   *
+   */
   function getSignup() {
-    getEmailList()
-      .then(() => {
-        return;
-      })
-      .catch(() => {
-        return;
-      });
+    filteringKeywords();
+    doSignUp(props.data).then((res) => {
+      console.log("res :>> ", res);
+      props.setStep(3);
+      return;
+    });
   }
 
   useEffect(() => {
@@ -123,9 +125,7 @@ export default function SignupFavScreen(props: any) {
           $height="48px"
           $border="1px solid #000"
           onClick={() => {
-            filteringKeywords();
-            // getSignup();
-            props.setStep(3);
+            getSignup();
           }}
         >
           <CommonText

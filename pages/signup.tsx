@@ -1,8 +1,9 @@
+import { SignUpInterface } from "@type/SignupTypes";
 import SignupProcessScreen from "components/signup/signupAccess";
 import SignupFavScreen from "components/signup/signupFav";
 import SignupSuccessScreen from "components/signup/signupSuccess";
 import SignupInfoScreen from "components/signup/signupUserInfo";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function SignUpPage() {
   /**
@@ -11,8 +12,8 @@ export default function SignUpPage() {
    * 2 fav_info
    * 3 success
    */
-  const [step, setStep] = useState(3);
-  const [data, setData] = useState({
+  const [step, setStep] = useState(0);
+  const [data, setData] = useState<SignUpInterface>({
     email: "",
     uniName: "",
     pw: "",

@@ -3,6 +3,11 @@ import AutoCompleteInput from "components/moduls/autoComplete";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import {
+  checkMailCode,
+  getEmailList,
+  sendMailCode
+} from "service/SignupService";
+import {
   CommonButton,
   CommonText,
   NoticeText,
@@ -17,9 +22,10 @@ import {
   SignUpSet
 } from "styles/SignUpStyle";
 
+import mockData from "../../interface/dev/mockUserData.json";
+
 export default function SignupProcessScreen(props: any) {
   const route = useRouter();
-
   /**
    * 패스워드 확인 용도
    */
@@ -31,17 +37,31 @@ export default function SignupProcessScreen(props: any) {
   const [isCorrectPwForm, setIsCorrectPwForm] = useState(false);
   const [isCorrectPwCheck, setIsCorrectPwCheck] = useState(false);
   const [isCorrectCode, setIsCorrectCode] = useState(false);
-  const mockCode = "111111";
   /**
    * 본인인증 코드 확인 버튼 이벤트 해금용도
    * 버튼을 누르면 true로 변경
    */
   const [isSendCode, setIsSendCode] = useState(false);
 
+  /**
+   * 본인인증 코드 검증
+   * @returns
+   */
   const checkCode = () => {
     if (code === mockCode) {
       setIsCorrectCode(true);
+      return;
     }
+    // checkMailCode(props.data.email, code).then((res: any) => {
+    //   console.log("res :>> ", res);
+    //   if (res === "correct") {
+    //     setIsCorrectCode(true);
+    //     return;
+    //   } else {
+    //     setIsCorrectCode(false);
+    //     return;
+    //   }
+    // });
   };
 
   // 5분
@@ -118,6 +138,46 @@ export default function SignupProcessScreen(props: any) {
     /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#\$%\^&\*])(?=.{8,})(?!.*\s).*$/;
 
   /**
+   * 이메일 코드 발사 핸들링 함수
+   * @email 입력한 이메일
+   * @returns
+   */
+  function handleEmailCode(email: string) {
+    if (isCorrectEmailForm) {
+      setIsSendCode(true);
+      setIsCorrectCode(false);
+      handleResendClick();
+
+      // const result = mockData.data.find(
+      //   (key) => key.email === props.data.email
+      // )?.email;
+      // if (result === undefined) {
+      //   // 이메일 확인
+      //   getEmailList()
+      //     .then((res) => {
+      //       console.log("res :>> ", res);
+      //       setIsSendCode(true);
+      //       setIsCorrectCode(false);
+      //       handleResendClick();
+      //     })
+      //     .catch((err) => {
+      //       console.log("err :>> ", err);
+      //     });
+
+      //   sendMailCode(email).then(() => {
+      //     setIsSendCode(true);
+      //     setIsCorrectCode(false);
+      //     handleResendClick();
+      //   });
+      // } else {
+      //   alert("이미 가입하신 이메일 입니다.");
+      // }
+    } else {
+      return;
+    }
+  }
+
+  /**
    *
    * @param setValue state 설정 함수
    * @param value 입력 값
@@ -192,6 +252,11 @@ export default function SignupProcessScreen(props: any) {
     return () => {};
   }, [isCorrectCode]);
 
+  /**
+   * mock data
+   */
+  const mockCode = "111111";
+
   return (
     <SignUpContainer>
       <SignUpBox>
@@ -239,11 +304,7 @@ export default function SignupProcessScreen(props: any) {
             $border="1px solid #000"
             $margin="0 0 0 30px"
             onClick={() => {
-              if (isCorrectEmailForm) {
-                setIsSendCode(true);
-                setIsCorrectCode(false);
-                handleResendClick();
-              }
+              handleEmailCode(props.data.email);
             }}
           >
             <CommonText
