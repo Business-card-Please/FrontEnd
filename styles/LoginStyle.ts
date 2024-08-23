@@ -61,8 +61,12 @@ const LoginInput = styled.input`
   font-weight: 600;
   line-height: 16px;
 
-  $padding-left: 16px;
+  padding-left: 16px;
   margin-top: 10px;
+
+  &::placeholder {
+    font-weight: 400;
+  }
 `;
 
 const LoginFastRouteSet = styled.div`

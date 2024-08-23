@@ -4,7 +4,6 @@ export interface LoginFastRouteInterFace {
 }
 
 export interface LoginInterface {
-  id: string;
-  pw: string;
-  token: string;
+  email: string;
+  password: string;
 }

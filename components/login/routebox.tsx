@@ -12,18 +12,18 @@ export default function RouteBox(props: LoginFastRouteInterFace) {
 
   return (
     <CommonButton
-      width="49%"
-      height="14px"
-      borderRight={rightLine}
+      $width="49%"
+      $height="14px"
+      $borderRight={rightLine}
       onClick={() => {
         console.log(props.text + "클릭");
       }}
     >
       <CommonText
-        fontSize="14px"
-        fontWeight="300"
-        color="#6c757d"
-        lineHeight="14px"
+        $fontSize="14px"
+        $fontWeight="300"
+        $color="#6c757d"
+        $lineHeight="14px"
       >
         {props.text}
       </CommonText>
