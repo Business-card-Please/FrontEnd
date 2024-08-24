@@ -15,25 +15,27 @@ import d from "@pic/술먹.jpg";
 import { useEffect, useState } from "react";
 import { LoginInterface } from "@type/LoginType";
 import { loginWithData } from "service/LoginService";
+import { useRouter } from "next/router";
 
 function LoginArea() {
+  const route = useRouter();
+
   const [info, setInfo] = useState<LoginInterface>({
     email: "",
     password: ""
   });
 
   function sendLogin() {
-    loginWithData(info);
+    loginWithData(info).then((res) => {
+      if (res === 401) {
+        alert("아이디 또는 비밀번호가 틀렸습니다.");
+      }
+    });
   }
 
   function setData(name: string, value: string | number) {
     setInfo((prev) => ({ ...prev, [name]: value }));
   }
-
-  useEffect(() => {
-    console.log("info :>> ", info);
-    return () => {};
-  }, [info]);
 
   return (
     <LoginBox>
@@ -81,8 +83,8 @@ function LoginArea() {
         />
       </LoginInputBox>
       <LoginFastRouteSet>
-        <RouteBox text="아이디 찾기" isLined={true} />
-        <RouteBox text="비밀번호 재설정" isLined={false} />
+        <RouteBox text="아이디 찾기" isLined={true} routeMethod={route} />
+        <RouteBox text="비밀번호 재설정" isLined={false} routeMethod={route} />
       </LoginFastRouteSet>
       <CommonButton
         $width="calc(100% - 40px)"

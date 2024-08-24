@@ -3,11 +3,12 @@ import { AxiosMain } from "./AxiosConfig";
 
 export const loginWithData = async (data: LoginInterface) => {
   try {
-    await AxiosMain.post("/account/login", {
+    const result = await AxiosMain.post("/account/login", {
       email: data.email,
       password: data.password
     });
-  } catch (err) {
-    console.log("err :>> ", err);
+    return result.status;
+  } catch (error: any) {
+    return error.response.status;
   }
 };
