@@ -49,7 +49,7 @@ export default function SignupInfoScreen(props: any) {
    *
    * @param setValue state 설정 함수
    * @param value 입력 값
-   * @param type 0 pw 1 props.data.00
+   * @param type 0 학년 1 props.data.00 2 닉네임
    */
   const handleValueChange = (
     setValue: Function,
@@ -61,7 +61,11 @@ export default function SignupInfoScreen(props: any) {
       const inputValue = value.replace(/[^0-9]/g, "");
       setValue(name, inputValue);
     } else if (type === 1) setValue(name, value);
-    else setValue(value);
+    else if (type === 2) {
+      const doNotTryXSS = /[<>&'"/\\()\.|,\-_=+`]/g;
+      const inputValue = value.replace(doNotTryXSS, "");
+      setValue(name, inputValue);
+    } else setValue(value);
   };
 
   return (
@@ -121,6 +125,7 @@ export default function SignupInfoScreen(props: any) {
         </CommonText>
         <SignUpSet $width="100%">
           <SignUpInput
+            maxLength={16}
             placeholder="닉네임을 입력해주세요."
             value={props.data.nickName}
             onChange={(event) => {
@@ -128,11 +133,18 @@ export default function SignupInfoScreen(props: any) {
                 props.setData,
                 event.target.value,
                 "nickName",
-                1
+                2
               );
             }}
           />
         </SignUpSet>
+        <NoticeText $margin="10px 0 0 0">
+          💡 닉네임은 영어, 한글, 숫자, 특수문자(!@#$%^*?~)를 포함한 2자리에
+          16자리로 입력해주세요.
+        </NoticeText>
+        <NoticeText $margin="10px 0 0 0">
+          💡 닉네임은 학우님의 아이디이자 활동명으로 쓰입니다.
+        </NoticeText>
         {props.data.nickName.length === 0 && (
           <WaringText $margin="10px 0 0 0">
             - 닉네임이 입력되지 않았습니다.

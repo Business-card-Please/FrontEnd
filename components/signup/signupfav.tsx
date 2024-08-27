@@ -54,26 +54,36 @@ export default function SignupFavScreen(props: any) {
           선호하는 종류
         </CommonText>
         <CheckBoxContainer>
-          <CheckBoxSet onClick={() => setIsChecked(!isChecked)}>
+          <CheckBoxSet>
             <Checkbox id="check1" />
-            <CheckedLabel htmlFor="check1" isChecked={isChecked} />
+            <CheckedLabel
+              htmlFor="check1"
+              isChecked={isChecked}
+              onClick={() => setIsChecked(!isChecked)}
+            />
             <CommonText
               $fontSize="16px"
               $fontWeight="500"
               $color="#000"
               $lineHeight="16px"
+              onClick={() => setIsChecked(!isChecked)}
             >
               교양 과목
             </CommonText>
           </CheckBoxSet>
-          <CheckBoxSet onClick={() => setIsChecked1(!isChecked1)}>
+          <CheckBoxSet>
             <Checkbox id="check2" />
-            <CheckedLabel htmlFor="check2" isChecked={isChecked1} />
+            <CheckedLabel
+              htmlFor="check2"
+              isChecked={isChecked1}
+              onClick={() => setIsChecked1(!isChecked1)}
+            />
             <CommonText
               $fontSize="16px"
               $fontWeight="500"
               $color="#000"
               $lineHeight="16px"
+              onClick={() => setIsChecked1(!isChecked1)}
             >
               전공 과목
             </CommonText>

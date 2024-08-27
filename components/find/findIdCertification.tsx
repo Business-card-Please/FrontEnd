@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { sendNicknameToEmail } from "service/FindService";
 import { checkMailCode, sendMailCode } from "service/SignupService";
 import {
   CommonText,
@@ -44,7 +45,7 @@ export default function FindIdCertificationScreen(props: any) {
       alert("이메일 인증을 진행해주세요.");
       return;
     }
-
+    sendNicknameToEmail(email);
     props.setStep(1);
   }
 

@@ -27,7 +27,16 @@ export default function FindIDResultScreen() {
               $lineHeight="28px"
               $margin="30px 0 0 0"
             >
-              📢 학우님은 {"이메일"} 로 가입하셨습니다.
+              📢 학우님께서 가입한 이메일로 메일을 전송했습니다.
+            </CommonText>
+            <CommonText
+              $fontSize="24px"
+              $fontWeight="700"
+              $color="#000"
+              $lineHeight="24px"
+              $margin="30px 0 0 0"
+            >
+              😃 학교 메일 시스템에 따라 시간차가 존재하니 양해부탁드립니다.
             </CommonText>
           </SignUpSuccessBox>
         </SignUpSet>

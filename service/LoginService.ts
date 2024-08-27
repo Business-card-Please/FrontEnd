@@ -4,7 +4,7 @@ import { AxiosMain } from "./AxiosConfig";
 export const loginWithData = async (data: LoginInterface) => {
   try {
     const result = await AxiosMain.post("/account/login", {
-      email: data.email,
+      nickname: data.nickname,
       password: data.password
     });
     return result.status;

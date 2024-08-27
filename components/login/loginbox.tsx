@@ -21,7 +21,7 @@ function LoginArea() {
   const route = useRouter();
 
   const [info, setInfo] = useState<LoginInterface>({
-    email: "",
+    nickname: "",
     password: ""
   });
 
@@ -58,12 +58,12 @@ function LoginArea() {
           $color="#036666"
           $lineHeight="16px"
         >
-          이메일 입력
+          아이디(닉네임) 입력
         </CommonText>
         <LoginInput
-          placeholder="이메일을 입력하세요."
-          value={info.email}
-          onChange={(e) => setData("email", e.target.value)}
+          placeholder="아이디을 입력하세요."
+          value={info.nickname}
+          onChange={(e) => setData("nickname", e.target.value)}
         />
       </LoginInputBox>
       <LoginInputBox>

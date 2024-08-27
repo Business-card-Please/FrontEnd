@@ -7,6 +7,6 @@ export interface LoginFastRouteInterFace {
 }
 
 export interface LoginInterface {
-  email: string;
+  nickname: string;
   password: string;
 }
