@@ -8,7 +8,7 @@ function LoginPage() {
   useEffect(() => {
     console.log("cookie :>> ", cookie.accessKey);
     return () => {};
-  }, []);
+  }, [cookie]);
   return (
     <LoginContainer>
       <LoginBox />
