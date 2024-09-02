@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import LoginBox from "../components/login/loginBox";
 import { LoginContainer } from "../styles/LoginStyle";
-import { useCookies } from "react-cookie";
+import { Cookies } from "react-cookie";
 
 function LoginPage() {
-  const [cookie, setCookie] = useCookies(["accessKey"]);
+  const cookie = new Cookies();
   useEffect(() => {
-    console.log("cookie :>> ", cookie.accessKey);
+    console.log("cookie :>> ", cookie.get("access_token"));
     return () => {};
-  }, [cookie]);
+  }, []);
   return (
     <LoginContainer>
       <LoginBox />
