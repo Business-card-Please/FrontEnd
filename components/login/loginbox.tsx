@@ -29,21 +29,22 @@ function LoginArea() {
    * 추후에 경고 메시지로 변경
    */
   function sendLogin() {
-    loginWithData(info)
-      .then((res) => {
-        console.log("rs :>> ", res);
-        if (res === 200) {
-          route.push("main");
-          return;
-        }
-        if (res === 401) {
-          alert("아이디 또는 비밀번호가 틀렸습니다.");
-          return;
-        }
-      })
-      .catch((err) => {
-        console.log("err :>> ", err);
-      });
+    route.push("main");
+    // loginWithData(info)
+    //   .then((res) => {
+    //     console.log("rs :>> ", res);
+    //     if (res === 200) {
+    //       route.push("main");
+    //       return;
+    //     }
+    //     if (res === 401) {
+    //       alert("아이디 또는 비밀번호가 틀렸습니다.");
+    //       return;
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log("err :>> ", err);
+    //   });
   }
 
   function setData(name: string, value: string | number) {

@@ -159,3 +159,39 @@ export const NoticeText = styled.span<DivScreenProps>`
 
   box-sizing: content-box;
 `;
+
+export const TopContainer = styled.div`
+  width: 100%;
+  height: 70px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: yellow;
+`;
+
+export const BottomTabBarContainer = styled.div`
+  width: 100%;
+  height: 60px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  background-color: blue;
+`;
+
+export const TabBarBox = styled.div`
+  width: 50px;
+  height: 60px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  background-color: blue;
+`;
