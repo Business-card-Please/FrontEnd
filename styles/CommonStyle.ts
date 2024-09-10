@@ -195,3 +195,17 @@ export const TabBarBox = styled.div`
 
   background-color: blue;
 `;
+
+export const NewSignBox = styled.div`
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #fa3e2d;
+
+  border-radius: 4px;
+`;

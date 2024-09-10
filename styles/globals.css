@@ -10,7 +10,9 @@ div#__next > div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
 
+body {
   background-color: white;
 }
 
