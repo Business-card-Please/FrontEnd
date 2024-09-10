@@ -4,6 +4,7 @@ import { DivScreenProps } from "./StyleInterfacer";
 export const MainContainer = styled.div`
   width: 100%;
   height: 100%;
+  min-width: 0;
 
   display: flex;
   flex-direction: column;
@@ -36,7 +37,7 @@ export const MainContainerBox = styled.div`
 
 export const MainBoardBox = styled.div<DivScreenProps>`
   width: 100%;
-  height: 600px;
+  height: 750px;
 
   display: flex;
   flex-direction: column;
@@ -47,8 +48,6 @@ export const MainBoardBox = styled.div<DivScreenProps>`
   box-sizing: border-box;
 
   margin: ${(props) => props.$margin};
-
-  background-color: purple;
 `;
 
 export const MainBoardTitleBox = styled.div`
@@ -71,11 +70,13 @@ export const MainContentBox = styled.div`
   justify-content: center;
 
   box-sizing: border-box;
+
+  border: 1px solid #001232;
 `;
 
 export const MainContentTitleBox = styled.div`
   width: 100%;
-  height: 45px;
+  height: 35px;
 
   display: flex;
   flex-direction: row;
@@ -84,7 +85,7 @@ export const MainContentTitleBox = styled.div`
 
   padding: 0 15px;
 
-  background-color: #1f0;
+  border-bottom: 1px solid #000;
 `;
 
 export const MainContentTitleSet = styled.div`
@@ -99,12 +100,38 @@ export const MainContentTitleSet = styled.div`
 
 export const MainContentDataBox = styled.div`
   width: 100%;
-  height: 154px;
+  height: 165px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
-  background-color: #1a2;
+  padding: 0 15px;
+`;
+
+export const MainContentDataSet = styled.div`
+  width: 100%;
+  height: 20px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  box-sizing: border-box;
+
+  margin: 15px 0 0 0;
+`;
+
+export const MainContentTextSet = styled.div`
+  width: 100%;
+  height: 120px;
+
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
 `;
