@@ -72,6 +72,7 @@ export const MainContentBox = styled.div`
   box-sizing: border-box;
 
   border: 1px solid #001232;
+  margin-bottom: 10px;
 `;
 
 export const MainContentTitleBox = styled.div`
