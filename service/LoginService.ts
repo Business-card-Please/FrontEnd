@@ -7,7 +7,7 @@ export const loginWithData = async (data: LoginInterface) => {
       nickname: data.nickname,
       password: data.password
     });
-    return result.status;
+    return result;
   } catch (error: any) {
     return error.response.status;
   }

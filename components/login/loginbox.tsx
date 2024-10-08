@@ -16,9 +16,12 @@ import { useEffect, useState } from "react";
 import { LoginInterface } from "@type/LoginType";
 import { loginWithData } from "service/LoginService";
 import { useRouter } from "next/router";
+import { useSetRecoilState } from "recoil";
+import LoginUserInfoSelector from "recoil/selector/UserValueSelector";
 
 function LoginArea() {
   const route = useRouter();
+  const setUserInfo = useSetRecoilState(LoginUserInfoSelector);
 
   const [info, setInfo] = useState<LoginInterface>({
     nickname: "",
@@ -32,12 +35,22 @@ function LoginArea() {
     // route.push("main");
     loginWithData(info)
       .then((res) => {
-        console.log("rs :>> ", res);
-        if (res === 200) {
+        if (res.data.data.department2 === "N/A")
+          setUserInfo({
+            department1: res.data.data.department1,
+            department2: null
+          });
+        else
+          setUserInfo({
+            department1: res.data.data.department1,
+            department2: res.data.data.department2
+          });
+
+        if (res.status === 200) {
           route.push("main");
           return;
         }
-        if (res === 401) {
+        if (res.status === 401) {
           alert("아이디 또는 비밀번호가 틀렸습니다.");
           return;
         }

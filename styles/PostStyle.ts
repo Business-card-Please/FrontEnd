@@ -84,6 +84,8 @@ export const CommunityContentBox = styled.div`
 
   border: 1px solid #000;
 
+  cursor: pointer;
+
   margin-bottom: 10px;
 `;
 
@@ -95,8 +97,6 @@ export const CommunityContentTitleBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  border: 1px solid #000;
 `;
 
 export const CommunityContentTitleVerticalBox = styled.div`
@@ -107,8 +107,6 @@ export const CommunityContentTitleVerticalBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-
-  border: 1px solid #000;
 `;
 
 export const CommunityContentTitleHorizontalBox = styled.div<DivScreenProps>`
@@ -121,24 +119,9 @@ export const CommunityContentTitleHorizontalBox = styled.div<DivScreenProps>`
   align-items: center;
 
   padding: ${(props) => props.$padding};
-
-  border: 1px solid #000;
 `;
 
 export const CommunityContentPostBox = styled.div<DivScreenProps>`
-  /* width: 100%;
-  height: 300px;
-
-  overflow: hidden;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 7;
-  -webkit-box-orient: vertical;
-  word-break: break-all;
-
-  padding: ${(props) => props.$padding};
-
-  border: 1px solid #000; */
   width: 100%;
   height: 300px;
   position: relative;
@@ -147,7 +130,6 @@ export const CommunityContentPostBox = styled.div<DivScreenProps>`
   word-break: break-all;
 
   padding: ${(props) => props.$padding};
-  border: 1px solid #000;
 
   &::after {
     content: "...";
@@ -168,6 +150,4 @@ export const CommunityContentTailBox = styled.div`
   align-items: center;
 
   padding-right: 10px;
-
-  border: 1px solid #000;
 `;

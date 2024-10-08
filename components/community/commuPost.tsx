@@ -10,7 +10,10 @@ import {
 } from "styles/PostStyle";
 import profile from "@pic/hine.jpg";
 
-export default function CommunityPreviewPostBox() {
+export default function CommunityPreviewPostBox(props: any) {
+  const { nickName, department, className, title, content, date, views } =
+    props;
+
   return (
     <CommunityContentBox>
       <CommunityContentTitleBox>
