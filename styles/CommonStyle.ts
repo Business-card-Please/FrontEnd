@@ -11,7 +11,8 @@ export const CommonText = styled.span<TextScreenProps>`
   margin: ${(props) => props.$margin};
 
   overflow: ${(props) => props.$overflow};
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
   text-overflow: ${(props) => props.$textOverflow};
 
   font-family: "NotoSansKR";

@@ -12,9 +12,70 @@ export const CommunityContainer = styled.div`
   align-items: center;
 `;
 
+export const CommunitySearchBox = styled.div`
+  width: 100%;
+  height: 48px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const CommunitySearchInput = styled.input`
+  width: 80%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+
+  background: #fff;
+  border: 1px solid #343a40;
+  border-radius: 12px;
+
+  font-family: "NotoSansKR";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+
+  padding-left: 16px;
+
+  &::placeholder {
+    font-weight: 400;
+  }
+`;
+
+export const CommunityContentArea = styled.div`
+  width: 100%;
+  height: calc(100% - 48px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  overflow-y: auto;
+  flex-wrap: nowrap;
+
+  background: #fff;
+
+  border: 1px solid #000;
+
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+`;
+
 export const CommunityContentBox = styled.div`
   width: 100%;
-  height: 640px;
+  height: fit-content;
 
   display: flex;
   flex-direction: column;
@@ -28,12 +89,26 @@ export const CommunityContentBox = styled.div`
 
 export const CommunityContentTitleBox = styled.div`
   width: 100%;
-  height: 200px;
+  height: 80px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  border: 1px solid #000;
+`;
+
+export const CommunityContentTitleVerticalBox = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  border: 1px solid #000;
 `;
 
 export const CommunityContentTitleHorizontalBox = styled.div<DivScreenProps>`
@@ -44,11 +119,15 @@ export const CommunityContentTitleHorizontalBox = styled.div<DivScreenProps>`
   flex-direction: row;
   justify-content: ${(props) => props.$justifyContent};
   align-items: center;
+
+  padding: ${(props) => props.$padding};
+
+  border: 1px solid #000;
 `;
 
-export const CommunityContentPostBox = styled.div`
-  width: 100%;
-  height: 400px;
+export const CommunityContentPostBox = styled.div<DivScreenProps>`
+  /* width: 100%;
+  height: 300px;
 
   overflow: hidden;
 
@@ -56,6 +135,27 @@ export const CommunityContentPostBox = styled.div`
   -webkit-line-clamp: 7;
   -webkit-box-orient: vertical;
   word-break: break-all;
+
+  padding: ${(props) => props.$padding};
+
+  border: 1px solid #000; */
+  width: 100%;
+  height: 300px;
+  position: relative;
+
+  overflow: hidden;
+  word-break: break-all;
+
+  padding: ${(props) => props.$padding};
+  border: 1px solid #000;
+
+  &::after {
+    content: "...";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 5px;
+  }
 `;
 
 export const CommunityContentTailBox = styled.div`
@@ -64,6 +164,10 @@ export const CommunityContentTailBox = styled.div`
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+
+  padding-right: 10px;
+
+  border: 1px solid #000;
 `;
