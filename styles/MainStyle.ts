@@ -33,6 +33,8 @@ export const MainContainerBox = styled.div`
   flex-wrap: nowrap;
 
   overflow: auto;
+
+  padding: 0 10px;
 `;
 
 export const MainBoardBox = styled.div<DivScreenProps>`
