@@ -14,20 +14,20 @@ export default function MainContentComponent(props: any) {
   const { data } = props;
   const [time, setTime] = useState("");
 
+  function setup() {
+    if (data && data.cdatetime) {
+      const origin = data.cdatetime.split(".")[0];
+      const yearData = origin.split("T")[0];
+      const timeData = origin.split("T")[1];
+
+      setTime(yearData + " " + timeData);
+    }
+  }
+
   useEffect(() => {
-    const origin = data.cdatetime.split(".")[0];
-    const yearData = origin.split("T")[0];
-    const timeData = origin.split("T")[1];
-
-    setTime(yearData + " " + timeData);
-
+    setup();
     return () => {};
-  }, []);
-
-  useEffect(() => {
-    console.log("compo time :>> ", time);
-    return () => {};
-  }, [time]);
+  }, [data]);
 
   return (
     <MainContentBox>

@@ -101,6 +101,9 @@ export default function MainIndexScreen() {
     return () => {};
   }, []);
 
+  /**
+   *  데이터 셋업
+   */
   useEffect(() => {
     initData();
     // if (time.length > 9) {
@@ -120,7 +123,7 @@ export default function MainIndexScreen() {
     //       alert("로그아웃 되었습니다 :D");
     //     });
     // }
-    return () => {};
+    // return () => {};
   }, [time]);
 
   useEffect(() => {
