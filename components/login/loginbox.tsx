@@ -32,37 +32,42 @@ function LoginArea() {
    * 추후에 경고 메시지로 변경
    */
   function sendLogin() {
-    route.push("main");
-    // loginWithData(info)
-    //   .then((res) => {
-    //     if (res.data.data.department2 === "N/A")
-    //       setUserInfo({
-    //         department1: res.data.data.department1,
-    //         department2: null
-    //       });
-    //     else
-    //       setUserInfo({
-    //         department1: res.data.data.department1,
-    //         department2: res.data.data.department2
-    //       });
+    // route.push("main");
+    loginWithData(info)
+      .then((res) => {
+        if (res.data.data.department2 === "N/A")
+          setUserInfo({
+            department1: res.data.data.department1,
+            department2: null
+          });
+        else
+          setUserInfo({
+            department1: res.data.data.department1,
+            department2: res.data.data.department2
+          });
 
-    //     if (res.status === 200) {
-    //       route.push("main");
-    //       return;
-    //     }
-    //     if (res.status === 401) {
-    //       alert("아이디 또는 비밀번호가 틀렸습니다.");
-    //       return;
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log("err :>> ", err);
-    //   });
+        if (res.status === 200) {
+          route.push("main");
+          return;
+        }
+        if (res.status === 401) {
+          alert("아이디 또는 비밀번호가 틀렸습니다.");
+          return;
+        }
+      })
+      .catch((err) => {
+        console.log("err :>> ", err);
+      });
   }
 
   function setData(name: string, value: string | number) {
     setInfo((prev) => ({ ...prev, [name]: value }));
   }
+
+  // useEffect(() => {
+  //   setUserInfo({ department1: "", department2: "" });
+  //   return () => {};
+  // }, []);
 
   return (
     <LoginBox>

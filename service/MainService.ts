@@ -14,7 +14,7 @@ export const getMainBoardData = async (
   department2: string
 ) => {
   try {
-    console.log("repuset :>>", dateTime, size);
+    console.log("repuset :>>", dateTime, size, department1, department2);
     const result = await AxiosMain.post("/rentalboard/select", {
       datetime: dateTime,
       size: Number(size),

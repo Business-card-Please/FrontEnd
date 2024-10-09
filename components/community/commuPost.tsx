@@ -9,11 +9,29 @@ import {
   CommunityContentTitleVerticalBox
 } from "styles/PostStyle";
 import profile from "@pic/hine.jpg";
+import { useEffect, useState } from "react";
 
 export default function CommunityPreviewPostBox(props: any) {
-  const { nickName, department, className, title, content, date, views } =
-    props;
+  const { data } = props;
+  const [id, setId] = useState(-1);
+  const [time, setTime] = useState("");
 
+  function setup() {
+    setId(data.idx);
+    if (data && data.cdatetime) {
+      const origin = data.cdatetime.split(".")[0];
+      const yearData = origin.split("T")[0];
+      const timeData = origin.split("T")[1];
+
+      setTime(yearData + " " + timeData);
+    }
+  }
+
+  useEffect(() => {
+    setup();
+    return () => {};
+  }, []);
+  
   return (
     <CommunityContentBox>
       <CommunityContentTitleBox>
@@ -35,7 +53,7 @@ export default function CommunityPreviewPostBox(props: any) {
                 $color="#000"
                 $lineHeight="18px"
               >
-                닉네임이겠죠
+                {data.nickname}
               </CommonText>
             </CommunityContentTitleHorizontalBox>
             {/* major and classname */}
@@ -51,7 +69,7 @@ export default function CommunityPreviewPostBox(props: any) {
                 $color="#000"
                 $lineHeight="18px"
               >
-                학과겠죠
+                {data.department}
               </CommonText>
               <CommonText
                 $fontSize="18px"
@@ -68,7 +86,7 @@ export default function CommunityPreviewPostBox(props: any) {
                 $color="#000"
                 $lineHeight="18px"
               >
-                강의명이겠죠
+                {data.lecture}
               </CommonText>
             </CommunityContentTitleHorizontalBox>
           </CommunityContentTitleVerticalBox>
@@ -87,7 +105,7 @@ export default function CommunityPreviewPostBox(props: any) {
           $color="#000"
           $lineHeight="18px"
         >
-          제목이겠죠??
+          {data.title}
         </CommonText>
         <CommonText
           $fontSize="16px"
@@ -95,7 +113,7 @@ export default function CommunityPreviewPostBox(props: any) {
           $color="#000"
           $lineHeight="16px"
         >
-          2000.00.00 00:00:00
+          {time}
         </CommonText>
       </CommunityContentTitleHorizontalBox>
       <CommunityContentPostBox $padding="0 10px">
@@ -108,13 +126,7 @@ export default function CommunityPreviewPostBox(props: any) {
           $overflow="hidden"
           $textOverflow="ellipsis"
         >
-          내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??
-          내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??
-          내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??
-          내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??
-          내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??
-          내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??
-          내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??내용이겠죠??
+          {data.content}
         </CommonText>
       </CommunityContentPostBox>
       <CommunityContentTailBox>
@@ -125,7 +137,7 @@ export default function CommunityPreviewPostBox(props: any) {
           $color="#000"
           $lineHeight="16px"
         >
-          조회수겠죠 ^^
+          {data.viewcount}
         </CommonText>
       </CommunityContentTailBox>
     </CommunityContentBox>

@@ -20,6 +20,9 @@ export const CommunitySearchBox = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  border-bottom: 1px solid #000;
+  background: #fff;
 `;
 
 export const CommunitySearchInput = styled.input`
@@ -33,7 +36,6 @@ export const CommunitySearchInput = styled.input`
 
   background: #fff;
   border: 1px solid #343a40;
-  border-radius: 12px;
 
   font-family: "NotoSansKR";
   font-size: 16px;
@@ -61,7 +63,7 @@ export const CommunityContentArea = styled.div`
 
   background: #fff;
 
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 
   ::-webkit-scrollbar {
     width: 0;
@@ -119,6 +121,20 @@ export const CommunityContentTitleHorizontalBox = styled.div<DivScreenProps>`
   align-items: center;
 
   padding: ${(props) => props.$padding};
+  margin: ${(props) => props.$margin};
+`;
+
+export const CommunityButtonHorizontalBox = styled.div<DivScreenProps>`
+  width: ${(props) => props.$width};
+  height: ${(props) => props.$height};
+
+  display: flex;
+  flex-direction: row;
+  justify-content: ${(props) => props.$justifyContent};
+  align-items: center;
+
+  padding: ${(props) => props.$padding};
+  margin: ${(props) => props.$margin};
 `;
 
 export const CommunityContentPostBox = styled.div<DivScreenProps>`

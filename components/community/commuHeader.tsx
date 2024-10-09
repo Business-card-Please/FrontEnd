@@ -4,7 +4,7 @@ import { CommunitySearchBox, CommunitySearchInput } from "styles/PostStyle";
 export default function CommunityHeaderScreen() {
   return (
     <CommunitySearchBox>
-      <CommunitySearchInput placeholder="궁금한것이 있다면 검색해보세요!"  />
+      <CommunitySearchInput placeholder="궁금한것이 있다면 검색해보세요!" />
       <CommonButton
         $width="20%"
         $height="100%"
