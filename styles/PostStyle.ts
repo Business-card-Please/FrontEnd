@@ -4,11 +4,11 @@ import { DivScreenProps } from "./StyleInterfacer";
 export const CommunityContainer = styled.div`
   width: 100%;
   max-width: 768px;
-  height: 100%;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `;
 

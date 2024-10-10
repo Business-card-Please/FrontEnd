@@ -28,6 +28,6 @@ export const getMainBoardData = async (
   } catch (error: any) {
     console.log("err :>> ", error);
 
-    return error;
+    throw error;
   }
 };
