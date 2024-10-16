@@ -31,7 +31,7 @@ export default function CommunityPreviewPostBox(props: any) {
     setup();
     return () => {};
   }, []);
-  
+
   return (
     <CommunityContentBox>
       <CommunityContentTitleBox>
@@ -137,7 +137,7 @@ export default function CommunityPreviewPostBox(props: any) {
           $color="#000"
           $lineHeight="16px"
         >
-          {data.viewcount}
+          {data.viewcount} 회
         </CommonText>
       </CommunityContentTailBox>
     </CommunityContentBox>

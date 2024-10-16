@@ -2,7 +2,7 @@ import { MainContentList } from "@type/CommunityType";
 import CommunityBodyScreen from "components/community/commuBody";
 import CommunityHeaderScreen from "components/community/commuHeader";
 import MainBottomScreen from "components/main/mainBottom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useRecoilValue } from "recoil";
 import LoginUserInfoSelector from "recoil/selector/UserValueSelector";
 import { getMainBoardData } from "service/MainService";
@@ -15,9 +15,9 @@ export default function CommunityPage() {
   const [dataList, setDataList] = useState<MainContentList[]>([]);
   const [lastCdatetime, setLastCdatetime] = useState("");
   const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(true); // 더 이상 불러올 데이터가 없으면 false로 변경
+  const [isNext, setIsNext] = useState(true); // 서버에서 isNext 여부 확인
 
-  // ref 추가
   const contentAreaRef = useRef<HTMLDivElement>(null);
 
   async function initDate() {
@@ -33,7 +33,7 @@ export default function CommunityPage() {
   }, []);
 
   const fetchMainBoardData = async (datetime: string) => {
-    if (loading || !hasMore) return; // 이미 로딩 중이거나 더 이상 데이터가 없음
+    if (loading || !hasMore || !isNext) return; // 로딩 중이거나 더 이상 데이터가 없으면 요청 중지
     setLoading(true);
 
     try {
@@ -45,13 +45,15 @@ export default function CommunityPage() {
         getUserInfo.department1,
         getUserInfo.department2
       );
-      const newData = res.data.data;
+      const newData = res.data.data.current;
+      const isNextData = res.data.data.isNext; // 서버에서 isNext 값 가져오기
 
       if (newData.length > 0) {
         setDataList((prev) => [...prev, ...newData]);
-        setLastCdatetime(newData[newData.length - 1].cdatetime); // 마지막 게시글의 cdatetime 업데이트
+        setLastCdatetime(newData[newData.length - 1].cdatetime);
+        setIsNext(isNextData); // isNext 값 업데이트
       } else {
-        setHasMore(false); // 더 이상 데이터가 없으면 hasMore false로 설정
+        setHasMore(false); // 더 이상 데이터가 없으면 hasMore를 false로 설정
       }
     } catch (err) {
       console.error("Error fetching data:", err);
@@ -67,9 +69,19 @@ export default function CommunityPage() {
     }
   }, [time]);
 
-  // 스크롤 이벤트 처리
   useEffect(() => {
-    const handleScroll = () => {
+    console.log("dataList :>> ", dataList);
+  }, [dataList]);
+
+  // 디바운스를 위한 타이머 변수
+  let debounceTimer: NodeJS.Timeout | null = null;
+
+  const handleScroll = useCallback(() => {
+    if (debounceTimer) {
+      clearTimeout(debounceTimer);
+    }
+
+    debounceTimer = setTimeout(() => {
       if (contentAreaRef.current) {
         const { scrollTop, scrollHeight, clientHeight } =
           contentAreaRef.current;
@@ -78,13 +90,16 @@ export default function CommunityPage() {
         if (
           scrollTop + clientHeight >= scrollHeight - 100 &&
           !loading &&
-          hasMore
+          hasMore &&
+          isNext
         ) {
           fetchMainBoardData(lastCdatetime); // 마지막 게시글의 cdatetime으로 추가 데이터 요청
         }
       }
-    };
+    }, 200); // 200ms 디바운스 시간 설정
+  }, [lastCdatetime, loading, hasMore, isNext]);
 
+  useEffect(() => {
     const contentArea = contentAreaRef.current;
 
     if (contentArea) {
@@ -96,7 +111,7 @@ export default function CommunityPage() {
         contentArea.removeEventListener("scroll", handleScroll);
       }
     };
-  }, [lastCdatetime, loading, hasMore]);
+  }, [handleScroll]);
 
   return (
     <CommunityContainer>
