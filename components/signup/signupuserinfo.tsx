@@ -13,8 +13,10 @@ import {
   SignUpSet
 } from "styles/SignUpStyle";
 
+import majorOriginData from "../../interface/MajorData.json";
+
 export default function SignupInfoScreen(props: any) {
-  const majorOriginData = require("../../interface/MajorData.json");
+  // const majorOriginData = require("../../interface/MajorData.json");
   const [majorArray, setMajorArray] = useState<string[]>([]);
   const gradeArray: string[] = ["1", "2", "3", "4", "5", "6"];
 
@@ -39,8 +41,10 @@ export default function SignupInfoScreen(props: any) {
     const major = majorOriginData.find(
       (index: any) => index.name === props.data.uniName
     );
-    const dump = major.major;
-    setMajorArray(dump);
+    if (major !== undefined) {
+      const dump = major.major;
+      setMajorArray(dump);
+    }
 
     return () => {};
   }, []);

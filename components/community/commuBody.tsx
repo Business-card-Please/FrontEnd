@@ -26,7 +26,6 @@ export default function CommunityBodyScreen({
 
   return (
     <CommunityContentArea ref={contentAreaRef}>
-      {" "}
       {/* ref 설정 */}
       <CommunityButtonHorizontalBox
         $width="100%"

@@ -101,7 +101,7 @@ export default function MainIndexScreen() {
         getUserInfo.department1,
         getUserInfo.department2
       );
-      setDataList(res.data.data);
+      setDataList(res.data.data.current);
     } catch (err) {
       setError("데이터 불러오기 중 오류가 발생했습니다. :(");
     } finally {
