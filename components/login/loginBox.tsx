@@ -16,13 +16,14 @@ import { useEffect, useState } from "react";
 import { LoginInterface } from "@type/LoginType";
 import { loginWithData } from "service/LoginService";
 import { useRouter } from "next/router";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import LoginUserInfoSelector from "recoil/selector/UserValueSelector";
+import PageStateSelector from "recoil/selector/PageStateSelector";
 
 function LoginArea() {
   const route = useRouter();
   const setUserInfo = useSetRecoilState(LoginUserInfoSelector);
-
+  const setPageState = useSetRecoilState(PageStateSelector);
   const [info, setInfo] = useState<LoginInterface>({
     nickname: "",
     password: ""
@@ -35,16 +36,19 @@ function LoginArea() {
     // route.push("main");
     loginWithData(info)
       .then((res) => {
-        if (res.data.data.department2 === "N/A")
+        if (res.data.data.department2 === "N/A") {
           setUserInfo({
             department1: res.data.data.department1,
             department2: null
           });
-        else
+          setPageState(0);
+        } else {
           setUserInfo({
             department1: res.data.data.department1,
             department2: res.data.data.department2
           });
+          setPageState(0);
+        }
 
         if (res.status === 200) {
           route.push("main");
@@ -63,11 +67,6 @@ function LoginArea() {
   function setData(name: string, value: string | number) {
     setInfo((prev) => ({ ...prev, [name]: value }));
   }
-
-  // useEffect(() => {
-  //   setUserInfo({ department1: "", department2: "" });
-  //   return () => {};
-  // }, []);
 
   return (
     <LoginBox>

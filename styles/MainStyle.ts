@@ -138,3 +138,17 @@ export const MainContentTextSet = styled.div`
   -webkit-box-orient: vertical;
   word-break: break-all;
 `;
+
+export const MainBottomBox = styled.div<DivScreenProps>`
+  width: 25%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  background: ${(props) => props.$backGround};
+
+  cursor: pointer;
+`;

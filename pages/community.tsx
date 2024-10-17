@@ -3,7 +3,8 @@ import CommunityBodyScreen from "components/community/commuBody";
 import CommunityHeaderScreen from "components/community/commuHeader";
 import MainBottomScreen from "components/main/mainBottom";
 import { useEffect, useState, useRef, useCallback } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import PageStateSelector from "recoil/selector/PageStateSelector";
 import LoginUserInfoSelector from "recoil/selector/UserValueSelector";
 import { getMainBoardData } from "service/MainService";
 import { CommunityContainer } from "styles/PostStyle";
@@ -17,6 +18,7 @@ export default function CommunityPage() {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true); // 더 이상 불러올 데이터가 없으면 false로 변경
   const [isNext, setIsNext] = useState(true); // 서버에서 isNext 여부 확인
+  const setPageState = useSetRecoilState(PageStateSelector);
 
   const contentAreaRef = useRef<HTMLDivElement>(null);
 
@@ -29,6 +31,7 @@ export default function CommunityPage() {
   }
 
   useEffect(() => {
+    setPageState(1);
     initDate();
   }, []);
 

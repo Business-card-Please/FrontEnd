@@ -182,7 +182,8 @@ export const BottomTabBarContainer = styled.div`
   align-items: center;
   justify-content: space-around;
 
-  background-color: blue;
+  background-color: #56ab91;
+  opacity: 0.7;
 `;
 
 export const TabBarBox = styled.div`
