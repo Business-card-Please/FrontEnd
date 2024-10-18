@@ -12,11 +12,11 @@ import {
 } from "../../styles/LoginStyle";
 import RouteBox from "./routeBox";
 import d from "@pic/술먹.jpg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { LoginInterface } from "@type/LoginType";
 import { loginWithData } from "service/LoginService";
 import { useRouter } from "next/router";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import LoginUserInfoSelector from "recoil/selector/UserValueSelector";
 import PageStateSelector from "recoil/selector/PageStateSelector";
 

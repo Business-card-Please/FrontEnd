@@ -5,7 +5,7 @@ import { useState } from "react";
 import { SignUpContainer } from "styles/SignUpStyle";
 
 export default function ResetPwPage() {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(0);
   const [nickname, setNickname] = useState("");
 
   const switchStep = (step: number) => {
