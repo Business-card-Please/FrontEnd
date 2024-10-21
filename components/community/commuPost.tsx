@@ -10,11 +10,14 @@ import {
 } from "styles/PostStyle";
 import profile from "@pic/hine.jpg";
 import { useEffect, useState } from "react";
+import CommunityContentSelector from "recoil/selector/CommunityContentSelector";
+import { useSetRecoilState } from "recoil";
 
 export default function CommunityPreviewPostBox(props: any) {
   const { data } = props;
   const [id, setId] = useState(-1);
   const [time, setTime] = useState("");
+  const setContentValue = useSetRecoilState(CommunityContentSelector);
 
   function setup() {
     setId(data.idx);
@@ -33,7 +36,22 @@ export default function CommunityPreviewPostBox(props: any) {
   }, []);
 
   return (
-    <CommunityContentBox>
+    <CommunityContentBox
+      onClick={() => {
+        setContentValue({
+          idx: data.idx,
+          nickname: data.nickname,
+          title: data.title,
+          lecture: data.lecture,
+          department: data.department,
+          content: data.content,
+          cdatetime: data.cdatetime,
+          udatetime: data.udatetime,
+          viewcount: data.viewcount
+        });
+        console.log("data :>> ", data);
+      }}
+    >
       <CommunityContentTitleBox>
         <CommunityContentTitleHorizontalBox $width="100%" $height="90%">
           <PublicImageBox $width="70px" $height="100%">

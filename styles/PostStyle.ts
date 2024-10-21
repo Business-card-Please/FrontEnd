@@ -63,6 +63,8 @@ export const CommunityContentArea = styled.div`
 
   background: #fff;
 
+  padding: 0 10px;
+
   /* border: 1px solid #000; */
 
   ::-webkit-scrollbar {

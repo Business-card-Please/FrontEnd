@@ -6,7 +6,7 @@ import CommunityContentAtom from "recoil/atom/CommunityContentAtom";
  *
  */
 const CommunityContentSelector = selector({
-  key: "LoadRightValueSelector",
+  key: "CommunityContentSelector",
   get: ({ get }) => {
     const newState = get(CommunityContentAtom);
     return newState;
