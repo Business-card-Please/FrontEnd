@@ -7,7 +7,7 @@ export default function CommunityHeaderScreen() {
       <CommunitySearchInput placeholder="궁금한것이 있다면 검색해보세요!" />
       <CommonButton
         $width="20%"
-        $height="100%"
+        $height="42px"
         $border="1px solid #000"
         $backGround="#fff"
         $margin="0 0 0 5px"

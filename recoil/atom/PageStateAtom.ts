@@ -1,5 +1,6 @@
 import { atom } from "recoil";
-
+import { recoilPersist } from "recoil-persist";
+const { persistAtom } = recoilPersist();
 // 페이지 현재 상태
 
 /**
@@ -11,7 +12,8 @@ import { atom } from "recoil";
  */
 const PageStateAtom = atom<any>({
   key: "PageStateAtom",
-  default: -1
+  default: -1,
+  effects_UNSTABLE: [persistAtom]
 });
 
 export default PageStateAtom;

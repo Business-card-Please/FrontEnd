@@ -12,6 +12,19 @@ export const CommunityContainer = styled.div`
   align-items: center;
 `;
 
+export const ContentContainer = styled.div`
+  width: 100%;
+  max-width: 768px;
+  height: 100vh !important;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between !important;
+  align-items: center;
+
+  background: #fff;
+`;
+
 export const CommunitySearchBox = styled.div`
   width: 100%;
   height: 48px;
@@ -21,8 +34,11 @@ export const CommunitySearchBox = styled.div`
   justify-content: center;
   align-items: center;
 
-  border-bottom: 1px solid #000;
+  /* border-bottom: 1px solid #000; */
   background: #fff;
+
+  padding: 5px 10px 0 10px;
+  padding-bottom: 1px;
 `;
 
 export const CommunitySearchInput = styled.input`
@@ -77,20 +93,22 @@ export const CommunityContentArea = styled.div`
   -ms-overflow-style: none;
 `;
 
-export const CommunityContentBox = styled.div`
+export const CommunityContentBox = styled.div<DivScreenProps>`
   width: 100%;
-  height: fit-content;
+  height: ${(props) => props.$height};
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  border: 1px solid #000;
+  border: ${(props) => props.$border};
+  border-top: ${(props) => props.$borderTop};
+  border-bottom: ${(props) => props.$borderBottom};
 
   cursor: pointer;
 
-  margin-bottom: 10px;
+  margin-bottom: ${(props) => props.$margin};
 `;
 
 export const CommunityContentTitleBox = styled.div`
@@ -141,7 +159,7 @@ export const CommunityButtonHorizontalBox = styled.div<DivScreenProps>`
 
 export const CommunityContentPostBox = styled.div<DivScreenProps>`
   width: 100%;
-  height: 300px;
+  height: ${(props) => props.$height};
   position: relative;
 
   overflow: hidden;

@@ -1,4 +1,6 @@
 import { atom } from "recoil";
+import { recoilPersist } from "recoil-persist";
+const { persistAtom } = recoilPersist();
 
 // 게시판글 내용 완료
 const CommunityContentAtom = atom<any>({
@@ -13,7 +15,8 @@ const CommunityContentAtom = atom<any>({
     cdatetime: "",
     udatetime: "",
     viewcount: ""
-  }
+  },
+  effects_UNSTABLE: [persistAtom]
 });
 
 export default CommunityContentAtom;
