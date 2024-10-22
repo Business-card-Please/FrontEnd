@@ -1,3 +1,4 @@
+import { postContent } from "service/PostServies";
 import { CommonButton, CommonText } from "styles/CommonStyle";
 import {
   PostEditButtonHorizonSet,
@@ -16,8 +17,27 @@ export default function EditBodyScreen(props: any) {
     department,
     setDepartment,
     content,
-    setContent
+    setContent,
+    isEditMode,
+    route
   } = props;
+
+  function setValue(setFunction: Function, value: string) {
+    setFunction(value);
+  }
+
+  function postNewContent() {
+    postContent(title, lecture, department, content)
+      .then((res) => {
+        res.data.status === 200 && alert("게시글이 성공적으로 등록되었습니다.");
+        route.push("/community");
+        return;
+      })
+      .catch((e) => {
+        console.log("e :>> ", e);
+        return;
+      });
+  }
 
   return (
     <PostEditContainer>
@@ -35,6 +55,10 @@ export default function EditBodyScreen(props: any) {
           $width="calc(100% - 55px)"
           $height="40px"
           placeholder="제목을 입력해주세요."
+          value={title}
+          onChange={(e) => {
+            setValue(setTitle, e.target.value);
+          }}
         />
       </PostEditHorizonSet>
       <PostEditHorizonSet $width="100%" $height="48px">
@@ -52,6 +76,10 @@ export default function EditBodyScreen(props: any) {
             $width="calc(100% - 60px)"
             $height="40px"
             placeholder="강의명을 입력해주세요."
+            value={lecture}
+            onChange={(e) => {
+              setValue(setLecture, e.target.value);
+            }}
           />
         </PostEditHorizonSet>
         <PostEditHorizonSet $height="48px" $width="50%">
@@ -68,6 +96,10 @@ export default function EditBodyScreen(props: any) {
             $width="calc(100% - 50px)"
             $height="40px"
             placeholder="전공명을 선택해주세요"
+            value={department}
+            onChange={(e) => {
+              setValue(setDepartment, e.target.value);
+            }}
           />
         </PostEditHorizonSet>
       </PostEditHorizonSet>
@@ -75,6 +107,10 @@ export default function EditBodyScreen(props: any) {
         $width="100%"
         $height="80%"
         placeholder="내용을 입력해주세요"
+        value={content}
+        onChange={(e) => {
+          setValue(setContent, e.target.value);
+        }}
       />
       <PostEditButtonHorizonSet $width="100%" $height="48px">
         <CommonButton
@@ -82,6 +118,9 @@ export default function EditBodyScreen(props: any) {
           $height="46px"
           $border="1px solid #000"
           $backGround="#fff"
+          onClick={() => {
+            route.back();
+          }}
         >
           <CommonText
             $fontSize="1rem"
@@ -98,6 +137,9 @@ export default function EditBodyScreen(props: any) {
           $border="1px solid #000"
           $backGround="#fff"
           $margin="0 0 0 5px"
+          onClick={() => {
+            postNewContent();
+          }}
         >
           <CommonText
             $fontSize="1rem"

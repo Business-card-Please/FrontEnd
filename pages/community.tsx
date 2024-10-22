@@ -3,7 +3,8 @@ import CommunityBodyScreen from "components/community/commuBody";
 import CommunityHeaderScreen from "components/community/commuHeader";
 import MainBottomScreen from "components/main/mainBottom";
 import { useEffect, useState, useRef, useCallback } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
+import CommunityContentSelector from "recoil/selector/CommunityContentSelector";
 import PageStateSelector from "recoil/selector/PageStateSelector";
 import LoginUserInfoSelector from "recoil/selector/UserValueSelector";
 import { getMainBoardData } from "service/MainService";
@@ -19,7 +20,8 @@ export default function CommunityPage() {
   const [hasMore, setHasMore] = useState(true); // 더 이상 불러올 데이터가 없으면 false로 변경
   const [isNext, setIsNext] = useState(true); // 서버에서 isNext 여부 확인
   const setPageState = useSetRecoilState(PageStateSelector);
-
+  const setContentValue = useResetRecoilState(CommunityContentSelector);
+  const getContent = useRecoilValue(CommunityContentSelector);
   const contentAreaRef = useRef<HTMLDivElement>(null);
 
   async function initDate() {
@@ -32,6 +34,7 @@ export default function CommunityPage() {
 
   useEffect(() => {
     setPageState(1);
+    setContentValue();
     initDate();
   }, []);
 
@@ -75,6 +78,10 @@ export default function CommunityPage() {
   useEffect(() => {
     console.log("dataList :>> ", dataList);
   }, [dataList]);
+
+  useEffect(() => {
+    console.log("content :>> ", getContent);
+  }, [getContent]);
 
   // 디바운스를 위한 타이머 변수
   let debounceTimer: NodeJS.Timeout | null = null;
