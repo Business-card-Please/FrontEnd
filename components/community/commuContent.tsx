@@ -12,9 +12,8 @@ import {
 } from "styles/PostStyle";
 import profile from "@pic/hine.jpg";
 import { useEffect, useState } from "react";
-import CommunityContentSelector from "recoil/selector/CommunityContentSelector";
-import { useSetRecoilState } from "recoil";
 import { useRouter } from "next/router";
+import { deleteContent } from "service/PostServies";
 
 export default function CommunityFullContentPostBox(props: any) {
   const { data, userInfo } = props;
@@ -31,6 +30,17 @@ export default function CommunityFullContentPostBox(props: any) {
 
       setTime(yearData + " " + timeData);
     }
+  }
+
+  function deleteNowContent() {
+    deleteContent(id)
+      .then((res) => {
+        router.push("community");
+        return;
+      })
+      .catch((e) => {
+        console.log("e :>> ", e);
+      });
   }
 
   useEffect(() => {
@@ -187,6 +197,7 @@ export default function CommunityFullContentPostBox(props: any) {
             $border="1px solid #000"
             $backGround="#fff"
             $margin="0 0 0 5px"
+            onClick={deleteNowContent}
           >
             <CommonText
               $fontSize="1rem"

@@ -21,7 +21,6 @@ export default function CommunityPage() {
   const [isNext, setIsNext] = useState(true); // 서버에서 isNext 여부 확인
   const setPageState = useSetRecoilState(PageStateSelector);
   const setContentValue = useResetRecoilState(CommunityContentSelector);
-  const getContent = useRecoilValue(CommunityContentSelector);
   const contentAreaRef = useRef<HTMLDivElement>(null);
 
   async function initDate() {
@@ -79,9 +78,6 @@ export default function CommunityPage() {
     console.log("dataList :>> ", dataList);
   }, [dataList]);
 
-  useEffect(() => {
-    console.log("content :>> ", getContent);
-  }, [getContent]);
 
   // 디바운스를 위한 타이머 변수
   let debounceTimer: NodeJS.Timeout | null = null;
