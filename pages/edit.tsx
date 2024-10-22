@@ -18,6 +18,10 @@ export default function EditPage() {
   useEffect(() => {
     if (getContentData.idx !== undefined) {
       setIsEditMode(true);
+      setTitle(getContentData.title);
+      setLecture(getContentData.lecture);
+      setDepartment(getContentData.department);
+      setContent(getContentData.content);
       console.log("수정모드 on");
     }
     return () => {};
@@ -34,6 +38,7 @@ export default function EditPage() {
         setDepartment={setDepartment}
         content={content}
         setContent={setContent}
+        idx={isEditMode ? getContentData.idx : undefined}
         isEditMode={isEditMode}
         route={route}
       />

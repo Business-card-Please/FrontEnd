@@ -1,4 +1,4 @@
-import { postContent } from "service/PostServies";
+import { modifyContent, postContent } from "service/PostServies";
 import { CommonButton, CommonText } from "styles/CommonStyle";
 import {
   PostEditButtonHorizonSet,
@@ -18,6 +18,7 @@ export default function EditBodyScreen(props: any) {
     setDepartment,
     content,
     setContent,
+    idx,
     isEditMode,
     route
   } = props;
@@ -26,10 +27,24 @@ export default function EditBodyScreen(props: any) {
     setFunction(value);
   }
 
+  function modifySelectedContent() {
+    modifyContent(idx, title, lecture, department, content)
+      .then((res) => {
+        if (res.data.status === 200) alert("이야 료이키텐카이");
+        route.push("/community");
+        return;
+      })
+      .catch((e) => {
+        console.log("e :>> ", e);
+        return;
+      });
+  }
+
   function postNewContent() {
     postContent(title, lecture, department, content)
       .then((res) => {
-        res.data.status === 200 && alert("게시글이 성공적으로 등록되었습니다.");
+        if (res.data.status === 200)
+          alert("게시글이 성공적으로 등록되었습니다.");
         route.push("/community");
         return;
       })
@@ -138,7 +153,8 @@ export default function EditBodyScreen(props: any) {
           $backGround="#fff"
           $margin="0 0 0 5px"
           onClick={() => {
-            postNewContent();
+            if (isEditMode) modifySelectedContent();
+            else postNewContent();
           }}
         >
           <CommonText

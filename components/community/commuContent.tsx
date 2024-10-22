@@ -20,6 +20,7 @@ export default function CommunityFullContentPostBox(props: any) {
   const { data, userInfo } = props;
   const [id, setId] = useState(-1);
   const [time, setTime] = useState("");
+  const router = useRouter();
 
   function setup() {
     setId(data.idx);
@@ -167,6 +168,9 @@ export default function CommunityFullContentPostBox(props: any) {
             $height="52px"
             $border="1px solid #000"
             $backGround="#fff"
+            onClick={() => {
+              router.push("/edit");
+            }}
           >
             <CommonText
               $fontSize="1rem"
