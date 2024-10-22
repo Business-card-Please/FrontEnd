@@ -6,13 +6,12 @@ import { CommunityContentArea, ContentContainer } from "styles/PostStyle";
 import CommunityFullContentPostBox from "components/community/commuContent";
 import MainTopScreen from "components/main/mainTop";
 import LoginUserInfoSelector from "recoil/selector/UserValueSelector";
+import CommunityTopBarScreen from "components/community/commuTopBar";
 
 export default function ContentPage() {
   const getData = useRecoilValue(CommunityContentSelector);
   const [hydrated, setHydrated] = useState(false);
   const getUserInfo = useRecoilValue(LoginUserInfoSelector);
-
-  function isYourContent() {}
 
   // 클라이언트에서 렌더링 후에만 데이터 사용
   useEffect(() => {
@@ -25,9 +24,9 @@ export default function ContentPage() {
 
   return (
     <ContentContainer>
-      <MainTopScreen />
+      <CommunityTopBarScreen />
       <CommunityContentArea>
-        <CommunityFullContentPostBox data={getData} />
+        <CommunityFullContentPostBox data={getData} userInfo={getUserInfo} />
       </CommunityContentArea>
       <MainBottomScreen />
     </ContentContainer>

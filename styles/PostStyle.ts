@@ -144,6 +144,19 @@ export const CommunityContentTitleHorizontalBox = styled.div<DivScreenProps>`
   margin: ${(props) => props.$margin};
 `;
 
+export const CommunityContentButtonHorizontalBox = styled.div<DivScreenProps>`
+  width: ${(props) => props.$width};
+  height: ${(props) => props.$height};
+
+  display: ${(props) => props.$disPlay};
+  flex-direction: row;
+  justify-content: ${(props) => props.$justifyContent};
+  align-items: center;
+
+  padding: ${(props) => props.$padding};
+  margin: ${(props) => props.$margin};
+`;
+
 export const CommunityButtonHorizontalBox = styled.div<DivScreenProps>`
   width: ${(props) => props.$width};
   height: ${(props) => props.$height};

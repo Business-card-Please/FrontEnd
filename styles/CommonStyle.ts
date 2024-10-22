@@ -170,7 +170,19 @@ export const TopContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
+padding: 0 10px;
+
   background-color: yellow;
+`;
+
+export const TopContainerIndexBox = styled.div<DivScreenProps>`
+  width: ${(props) => props.$width};
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const BottomTabBarContainer = styled.div`

@@ -38,14 +38,14 @@ function LoginArea() {
       .then((res) => {
         if (res.data.data.department2 === "N/A") {
           setUserInfo({
-            nickname: res.data.nickname,
+            nickname: res.data.data.nickname,
             department1: res.data.data.department1,
             department2: null
           });
           setPageState(0);
         } else {
           setUserInfo({
-            nickname: res.data.nickname,
+            nickname: res.data.data.nickname,
             department1: res.data.data.department1,
             department2: res.data.data.department2
           });

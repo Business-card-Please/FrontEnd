@@ -3,6 +3,7 @@ import { CommonButton, CommonText, PublicImageBox } from "styles/CommonStyle";
 import {
   CommunityButtonHorizontalBox,
   CommunityContentBox,
+  CommunityContentButtonHorizontalBox,
   CommunityContentPostBox,
   CommunityContentTailBox,
   CommunityContentTitleBox,
@@ -16,11 +17,9 @@ import { useSetRecoilState } from "recoil";
 import { useRouter } from "next/router";
 
 export default function CommunityFullContentPostBox(props: any) {
-  const { data } = props;
+  const { data, userInfo } = props;
   const [id, setId] = useState(-1);
   const [time, setTime] = useState("");
-  const setContentValue = useSetRecoilState(CommunityContentSelector);
-  const route = useRouter();
 
   function setup() {
     setId(data.idx);
@@ -35,31 +34,14 @@ export default function CommunityFullContentPostBox(props: any) {
 
   useEffect(() => {
     setup();
+    console.log("isNickName :>> ", data.nickname, userInfo.nickname);
     return () => {};
   }, []);
 
   return (
     // 2000자 제한 필요
     <>
-      <CommunityContentBox
-        $height="100%"
-        $borderBottom="1px solid #000"
-        onClick={() => {
-          setContentValue({
-            idx: data.idx,
-            nickname: data.nickname,
-            title: data.title,
-            lecture: data.lecture,
-            department: data.department,
-            content: data.content,
-            cdatetime: data.cdatetime,
-            udatetime: data.udatetime,
-            viewcount: data.viewcount
-          });
-          route.push("/content");
-          console.log("data :>> ", data);
-        }}
-      >
+      <CommunityContentBox $height="100%" $borderBottom="1px solid #000">
         <CommunityContentTitleBox>
           <CommunityContentTitleHorizontalBox $width="100%" $height="90%">
             <PublicImageBox $width="70px" $height="100%">
@@ -171,8 +153,15 @@ export default function CommunityFullContentPostBox(props: any) {
         $width="100%"
         $height="52px"
         $margin="10px 0 "
+        $justifyContent={
+          data.nickname === userInfo.nickname ? "space-between" : "flex-end"
+        }
       >
-        <CommunityButtonHorizontalBox $width="50%" $height="52px">
+        <CommunityContentButtonHorizontalBox
+          $width="50%"
+          $height="52px"
+          $disPlay={data.nickname === userInfo.nickname ? "flex" : "none"}
+        >
           <CommonButton
             $width="160px"
             $height="52px"
@@ -204,7 +193,7 @@ export default function CommunityFullContentPostBox(props: any) {
               ❌ 삭제
             </CommonText>
           </CommonButton>
-        </CommunityButtonHorizontalBox>
+        </CommunityContentButtonHorizontalBox>
         <CommunityButtonHorizontalBox
           $width="50%"
           $height="52px"
