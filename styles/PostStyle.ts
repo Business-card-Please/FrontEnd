@@ -200,3 +200,112 @@ export const CommunityContentTailBox = styled.div`
 
   padding-right: 10px;
 `;
+
+export const PostEditContainer = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  background: #fff;
+
+  padding: 0 10px;
+`;
+
+export const PostEditInput = styled.input<DivScreenProps>`
+  width: ${(props) => props.$width};
+  height: ${(props) => props.$height};
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+
+  background: #fff;
+  border: 1px solid #fff;
+  border-bottom: 2px solid #343a40 !important;
+
+  font-family: "NotoSansKR";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+
+  padding-left: 8px;
+  /* margin-top: 10px; */
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  ::placeholder {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #999;
+  }
+`;
+
+export const PostEditContentInput = styled.textarea<DivScreenProps>`
+  width: ${(props) => props.$width};
+  height: ${(props) => props.$height};
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  background: #fff;
+  border: 2px solid #343a40 !important;
+  /* border-bottom: 2px solid #343a40 !important; */
+
+  font-family: "NotoSansKR";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+
+  padding: 8px;
+  resize: none;
+  overflow: auto;
+
+  margin-top: 5px;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  ::placeholder {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #999;
+  }
+`;
+
+export const PostEditHorizonSet = styled.div<DivScreenProps>`
+  width: ${(props) => props.$width};
+  height: ${(props) => props.$height};
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  margin: ${(props) => props.$margin};
+`;
+
+export const PostEditButtonHorizonSet = styled.div<DivScreenProps>`
+  width: ${(props) => props.$width};
+  height: ${(props) => props.$height};
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin: 10px 0 0 0;
+`;

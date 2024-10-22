@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { MainContentList } from "@type/CommunityType";
 import { useRecoilValue } from "recoil";
 import CommunityContentSelector from "recoil/selector/CommunityContentSelector";
+import { useRouter } from "next/router";
 
 interface CommunityBodyScreenProps {
   dataList: MainContentList[]; // 상위에서 전달되는 데이터 타입을 명시
@@ -20,6 +21,7 @@ export default function CommunityBodyScreen({
 }: CommunityBodyScreenProps) {
   const [localDataList, setLocalDataList] = useState<MainContentList[]>([]);
   const getContentValue = useRecoilValue(CommunityContentSelector);
+  const route = useRouter();
 
   useEffect(() => {
     if (dataList) {
@@ -83,6 +85,7 @@ export default function CommunityBodyScreen({
             $height="100%"
             $border="1px solid #000"
             $backGround="#fff"
+            onClick={() => route.push("/edit")}
           >
             <CommonText
               $fontSize="1rem"
