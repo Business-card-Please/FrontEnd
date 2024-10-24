@@ -1,4 +1,4 @@
-import WebSocketConnector from "components/moduls/WebSocketConnector";
+import WebSocketConnector from "components/moduls/webSocketConnector";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
