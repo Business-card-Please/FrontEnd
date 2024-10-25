@@ -1,4 +1,3 @@
-// components/WebSocketConnector.tsx
 import { useEffect } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { websocketState } from "recoil/atom/WebsocketAtom";
