@@ -11,7 +11,7 @@ import {
   LoginFastRouteSet
 } from "../../styles/LoginStyle";
 import RouteBox from "./routeBox";
-import d from "@pic/술먹.jpg";
+import d from "@pic/homeicon.png";
 import { useState } from "react";
 import { LoginInterface } from "@type/LoginType";
 import { loginWithData } from "service/LoginService";
@@ -82,7 +82,7 @@ function LoginArea() {
         $lineHeight="21px"
         $margin="10px 0 0 0"
       >
-        히히 타이틀 발사
+        UniRent
       </CommonText>
       <LoginInputBox>
         <CommonText
